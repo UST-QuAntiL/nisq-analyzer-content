@@ -1,0 +1,29 @@
+{
+    "name": "shor-general-qiskit",
+    "implementedAlgorithm": ...uuid...,
+    "fileLocation": "https://raw.githubusercontent.com/PlanQK/nisq-analyzer-content/master/example-implementations/shor-general-qiskit.py",
+    "selectionRule": "executable(N, shor-general-qiskit) :- N > 2.",
+    "sdk": "Qiskit",
+    "inputParameters": {
+        "parameters": [
+            {
+                "name": "N",
+                "type": "Integer",
+                "restriction": "N > 2",
+                "description": "Integer to be factored"
+            }
+        ]
+    },
+    "outputParameters": {
+        "parameters": [
+            {
+                "name": "phases",
+                "type": "String",
+                "restriction": "",
+                "description": "Phases of N"
+            }
+        ]
+    },
+    "widthRule": "expectedWidth(W, L, shor-general-qiskit) :- W is 2 * L + 3.",
+    "depthRule": "expectedDepth(D, L, shor-general-qiskit) :- D is L**3."
+}
