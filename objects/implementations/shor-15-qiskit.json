@@ -1,7 +1,7 @@
 {
     "name": "shor-15-qiskit",
-    "implementedAlgorithm": ....uuid.in.""....,
-    "fileLocation": "https://github.com/PlanQK/planqk-atlas-content/blob/master/example-data/example-implementations/shor-15-qiskit.py",
+    "implementedAlgorithm": ...uuid...,
+    "fileLocation": "https://raw.githubusercontent.com/PlanQK/nisq-analyzer-content/master/example-implementations/shor-15-qiskit.py",
     "selectionRule": "executable(N, shor-15-qiskit) :- N is 15.",
     "sdk": "Qiskit",
     "inputParameters": {
