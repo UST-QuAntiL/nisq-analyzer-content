@@ -1,0 +1,29 @@
+{
+    "name": "shor-15-qiskit",
+    "implementedAlgorithm": ....uuid.in.""....,
+    "fileLocation": "https://github.com/PlanQK/planqk-atlas-content/blob/master/example-data/example-implementations/shor-15-qiskit.py",
+    "selectionRule": "executable(N, shor-15-qiskit) :- N is 15.",
+    "sdk": "Qiskit",
+    "inputParameters": {
+        "parameters": [
+            {
+                "name": "N",
+                "type": "Integer",
+                "restriction": "N = 15",
+                "description": "Integer to be factored"
+            }
+        ]
+    },
+    "outputParameters": {
+        "parameters": [
+            {
+                "name": "phases",
+                "type": "String",
+                "restriction": "",
+                "description": "Phases of N"
+            }
+        ]
+    },
+    "widthRule": "expectedWidth(W, shor-15-qiskit) :- W is 8.",
+    "depthRule": "expectedDepth(D, shor-15-qiskit) :- D is 7."
+}
