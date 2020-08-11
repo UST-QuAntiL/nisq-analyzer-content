@@ -1,0 +1,29 @@
+{
+    "name": "grover-fix-sat-qiskit",
+    "implementedAlgorithm": ...uuid...,
+    "fileLocation": "https://raw.githubusercontent.com/PlanQK/nisq-analyzer-content/master/example-implementations/grover-fix-SAT-qiskit.py",
+    "selectionRule": "executable(Oracle, grover-fix-sat-qiskit) :- Oracle = '(A | B) & (A | ~B) & (~A | B)'.",
+    "sdk": "Qiskit",
+    "inputParameters": {
+        "parameters": [
+            {
+                "name": "Oracle",
+                "type": "String",
+                "restriction": "Oracle = (A | B) & (A | ~B) & (~A | B)",
+                "description": "Oracle for grover"
+            }
+        ]
+    },
+    "outputParameters": {
+        "parameters": [
+            {
+                "name": "assignment",
+                "type": "String",
+                "restriction": "",
+                "description": "Assignment of Boolean variables such that f evaluates to true"
+            }
+        ]
+    },
+    "widthRule": "expectedWidth(W, grover-fix-sat-qiskit) :- W is 8.",
+    "depthRule": "expectedDepth(D, grover-fix-sat-qiskit) :- D is 25."
+}

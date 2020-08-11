@@ -1,0 +1,29 @@
+{
+    "name": "grover-general-truthtable-qiskit",
+    "implementedAlgorithm": ...uuid...,
+    "fileLocation": "https://raw.githubusercontent.com/PlanQK/nisq-analyzer-content/master/example-implementations/grover-general-truthtable-qiskit.py",
+    "selectionRule": "executable(Oracle, grover-general-truthtable-qiskit) :- not(Oracle == null).",
+    "sdk": "Qiskit",
+    "inputParameters": {
+        "parameters": [
+            {
+                "name": "Oracle",
+                "type": "String",
+                "restriction": "Oracle has to be a a binary string of function f in a truth table",
+                "description": "Truth table oracle for grover"
+            }
+        ]
+    },
+    "outputParameters": {
+        "parameters": [
+            {
+                "name": "assignment",
+                "type": "String",
+                "restriction": "",
+                "description": "Assignment of Boolean variables such that f evaluates to true"
+            }
+        ]
+    },
+    "widthRule": "expectedWidth(W, grover-general-truthtable-qiskit) :- W >= 2.",
+    "depthRule": "expectedDepth(D, grover-general-truthtable-qiskit) :- D >= 5."
+}

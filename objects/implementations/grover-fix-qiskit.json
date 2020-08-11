@@ -1,0 +1,29 @@
+{
+    "name": "grover-fix-qiskit",
+    "implementedAlgorithm": ...uuid...,
+    "fileLocation": "https://raw.githubusercontent.com/PlanQK/nisq-analyzer-content/master/example-implementations/grover-fix-qiskit.py",
+    "selectionRule": "executable(Oracle, grover-fix-qiskit) :- Oracle = '0010000000000000'.",
+    "sdk": "Qiskit",
+    "inputParameters": {
+        "parameters": [
+            {
+                "name": "Oracle",
+                "type": "String",
+                "restriction": "Oracle = '0010000000000000'",
+                "description": "Truth table oracle for grover"
+            }
+        ]
+    },
+    "outputParameters": {
+        "parameters": [
+            {
+                "name": "assignment",
+                "type": "String",
+                "restriction": "",
+                "description": "Assignment of Boolean variables such that f evaluates to true"
+            }
+        ]
+    },
+    "widthRule": "expectedWidth(W, grover-fix-qiskit) :- W is 4.",
+    "depthRule": "expectedDepth(D, grover-fix-qiskit) :- D is 35."
+}

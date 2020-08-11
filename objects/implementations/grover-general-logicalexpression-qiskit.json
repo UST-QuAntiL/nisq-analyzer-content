@@ -1,0 +1,29 @@
+{
+    "name": "grover-general-logicalexpression-qiskit",
+    "implementedAlgorithm": ...uuid...,
+    "fileLocation": "https://raw.githubusercontent.com/PlanQK/nisq-analyzer-content/master/example-implementations/grover-general-logicalexpression-qiskit.py",
+    "selectionRule": "executable(Oracle, grover-general-logicalexpression-qiskit) :- not(Oracle == null).",
+    "sdk": "Qiskit",
+    "inputParameters": {
+        "parameters": [
+            {
+                "name": "Oracle",
+                "type": "String",
+                "restriction": "Oracle has to be a Boolean function",
+                "description": "Oracle for grover"
+            }
+        ]
+    },
+    "outputParameters": {
+        "parameters": [
+            {
+                "name": "assignment",
+                "type": "String",
+                "restriction": "",
+                "description": "Assignment of Boolean variables such that f evaluates to true"
+            }
+        ]
+    },
+    "widthRule": "expectedWidth(W, grover-general-logicalexpression-qiskit) :- W >= 2.",
+    "depthRule": "expectedDepth(D, grover-general-logicalexpression-qiskit) :- D >= 5."
+}
