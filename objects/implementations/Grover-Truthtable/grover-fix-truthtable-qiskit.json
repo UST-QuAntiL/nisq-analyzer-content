@@ -1,7 +1,7 @@
 {
     "name": "grover-fix-qiskit",
     "implementedAlgorithm": ...uuid...,
-    "fileLocation": "https://raw.githubusercontent.com/PlanQK/nisq-analyzer-content/master/example-implementations/grover-fix-qiskit.py",
+    "fileLocation": "https://raw.githubusercontent.com/UST-QuAntiL/nisq-analyzer-content/master/example-implementations/Grover-Truthtable/grover-fix-truthtable-qiskit.py",
     "selectionRule": "executable(Oracle, grover-fix-qiskit) :- Oracle = '0010000000000000'.",
     "sdk": "Qiskit",
     "inputParameters": {

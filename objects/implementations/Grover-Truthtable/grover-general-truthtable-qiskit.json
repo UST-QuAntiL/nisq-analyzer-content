@@ -1,7 +1,7 @@
 {
     "name": "grover-general-truthtable-qiskit",
     "implementedAlgorithm": ...uuid...,
-    "fileLocation": "https://raw.githubusercontent.com/PlanQK/nisq-analyzer-content/master/example-implementations/grover-general-truthtable-qiskit.py",
+    "fileLocation": "https://raw.githubusercontent.com/UST-QuAntiL/nisq-analyzer-content/master/example-implementations/Grover-Truthtable/grover-general-truthtable-qiskit.py",
     "selectionRule": "executable(Oracle, grover-general-truthtable-qiskit) :- not(Oracle == null).",
     "sdk": "Qiskit",
     "inputParameters": {
