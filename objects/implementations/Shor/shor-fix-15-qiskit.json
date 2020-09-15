@@ -2,7 +2,7 @@
     "name": "shor-fix-15-qiskit",
     "implementedAlgorithm": ...uuid...,
     "fileLocation": "https://raw.githubusercontent.com/UST-QuAntiL/nisq-analyzer-content/master/example-implementations/Shor/shor-fix-15-qiskit.py",
-    "selectionRule": "executable(N, shor-fix-15-qiskit) :- N is 15.",
+    "selectionRule": "processable(N, shor-fix-15-qiskit) :- N is 15.",
     "sdk": "Qiskit",
     "inputParameters": {
         "parameters": [

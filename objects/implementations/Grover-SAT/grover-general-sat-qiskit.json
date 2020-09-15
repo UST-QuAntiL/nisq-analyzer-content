@@ -2,7 +2,7 @@
     "name": "grover-general-sat-qiskit",
     "implementedAlgorithm": ...uuid...,
     "fileLocation": "https://raw.githubusercontent.com/UST-QuAntiL/nisq-analyzer-content/master/example-implementations/Grover-SAT/grover-general-sat-qiskit.py",
-    "selectionRule": "executable(Oracle, grover-general-sat-qiskit) :- not(Oracle == null).",
+    "selectionRule": "processable(Oracle, grover-general-sat-qiskit) :- not(Oracle == null).",
     "sdk": "Qiskit",
     "inputParameters": {
         "parameters": [

@@ -2,7 +2,7 @@
     "name": "grover-fix-truthtable-qiskit",
     "implementedAlgorithm": ...uuid...,
     "fileLocation": "https://raw.githubusercontent.com/UST-QuAntiL/nisq-analyzer-content/master/example-implementations/Grover-Truthtable/grover-fix-truthtable-qiskit.py",
-    "selectionRule": "executable(Oracle, grover-fix-truthtable-qiskit) :- Oracle = '0010000000000000'.",
+    "selectionRule": "processable(Oracle, grover-fix-truthtable-qiskit) :- Oracle = '0010000000000000'.",
     "sdk": "Qiskit",
     "inputParameters": {
         "parameters": [

@@ -2,7 +2,7 @@
     "name": "shor-general-qiskit",
     "implementedAlgorithm": ...uuid...,
     "fileLocation": "https://raw.githubusercontent.com/UST-QuAntiL/nisq-analyzer-content/master/example-implementations/Shor/shor-general-qiskit.py",
-    "selectionRule": "executable(N, shor-general-qiskit) :- N > 2.",
+    "selectionRule": "processable(N, shor-general-qiskit) :- N > 2.",
     "sdk": "Qiskit",
     "inputParameters": {
         "parameters": [

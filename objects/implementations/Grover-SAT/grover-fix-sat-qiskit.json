@@ -2,7 +2,7 @@
     "name": "grover-fix-sat-qiskit",
     "implementedAlgorithm": ...uuid...,
     "fileLocation": "https://raw.githubusercontent.com/UST-QuAntiL/nisq-analyzer-content/master/example-implementations/Grover-SAT/grover-fix-sat-qiskit.py",
-    "selectionRule": "executable(Oracle, grover-fix-sat-qiskit) :- Oracle = '(A | B) & (A | ~B) & (~A | B)'.",
+    "selectionRule": "processable(Oracle, grover-fix-sat-qiskit) :- Oracle = '(A | B) & (A | ~B) & (~A | B)'.",
     "sdk": "Qiskit",
     "inputParameters": {
         "parameters": [
