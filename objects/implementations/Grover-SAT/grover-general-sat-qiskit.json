@@ -1,8 +1,8 @@
 {
-    "name": "grover-general-logicalexpression-qiskit",
+    "name": "grover-general-sat-qiskit",
     "implementedAlgorithm": ...uuid...,
     "fileLocation": "https://raw.githubusercontent.com/UST-QuAntiL/nisq-analyzer-content/master/example-implementations/Grover-SAT/grover-general-sat-qiskit.py",
-    "selectionRule": "executable(Oracle, grover-general-logicalexpression-qiskit) :- not(Oracle == null).",
+    "selectionRule": "executable(Oracle, grover-general-sat-qiskit) :- not(Oracle == null).",
     "sdk": "Qiskit",
     "inputParameters": {
         "parameters": [
@@ -24,6 +24,6 @@
             }
         ]
     },
-    "widthRule": "expectedWidth(W, grover-general-logicalexpression-qiskit) :- W >= 2.",
-    "depthRule": "expectedDepth(D, grover-general-logicalexpression-qiskit) :- D >= 5."
+    "widthRule": "expectedWidth(W, grover-general-sat-qiskit) :- W >= 2.",
+    "depthRule": "expectedDepth(D, grover-general-sat-qiskit) :- D >= 5."
 }

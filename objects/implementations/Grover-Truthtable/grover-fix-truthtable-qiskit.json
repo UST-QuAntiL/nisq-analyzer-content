@@ -1,8 +1,8 @@
 {
-    "name": "grover-fix-qiskit",
+    "name": "grover-fix-truthtable-qiskit",
     "implementedAlgorithm": ...uuid...,
     "fileLocation": "https://raw.githubusercontent.com/UST-QuAntiL/nisq-analyzer-content/master/example-implementations/Grover-Truthtable/grover-fix-truthtable-qiskit.py",
-    "selectionRule": "executable(Oracle, grover-fix-qiskit) :- Oracle = '0010000000000000'.",
+    "selectionRule": "executable(Oracle, grover-fix-truthtable-qiskit) :- Oracle = '0010000000000000'.",
     "sdk": "Qiskit",
     "inputParameters": {
         "parameters": [
@@ -24,6 +24,6 @@
             }
         ]
     },
-    "widthRule": "expectedWidth(W, grover-fix-qiskit) :- W is 4.",
-    "depthRule": "expectedDepth(D, grover-fix-qiskit) :- D is 35."
+    "widthRule": "expectedWidth(W, grover-fix-truthtable-qiskit) :- W is 4.",
+    "depthRule": "expectedDepth(D, grover-fix-truthtable-qiskit) :- D is 35."
 }

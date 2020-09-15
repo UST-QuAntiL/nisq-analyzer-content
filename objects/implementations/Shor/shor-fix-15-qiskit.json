@@ -1,8 +1,8 @@
 {
-    "name": "shor-15-qiskit",
+    "name": "shor-fix-15-qiskit",
     "implementedAlgorithm": ...uuid...,
     "fileLocation": "https://raw.githubusercontent.com/UST-QuAntiL/nisq-analyzer-content/master/example-implementations/Shor/shor-fix-15-qiskit.py",
-    "selectionRule": "executable(N, shor-15-qiskit) :- N is 15.",
+    "selectionRule": "executable(N, shor-fix-15-qiskit) :- N is 15.",
     "sdk": "Qiskit",
     "inputParameters": {
         "parameters": [
@@ -24,6 +24,6 @@
             }
         ]
     },
-    "widthRule": "expectedWidth(W, shor-15-qiskit) :- W is 8.",
-    "depthRule": "expectedDepth(D, shor-15-qiskit) :- D is 7."
+    "widthRule": "expectedWidth(W, shor-fix-15-qiskit) :- W is 8.",
+    "depthRule": "expectedDepth(D, shor-fix-15-qiskit) :- D is 7."
 }
