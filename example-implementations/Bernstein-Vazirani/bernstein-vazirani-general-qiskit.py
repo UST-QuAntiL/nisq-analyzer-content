@@ -10,7 +10,7 @@ def get_circuit(**kwargs):
     print(s)
 
     qr = QuantumRegister(number_of_qubits + 1)
-    cr = ClassicalRegister(number_of_qubits + 1)
+    cr = ClassicalRegister(number_of_qubits)
 
     qc = QuantumCircuit(qr, cr)
 
@@ -26,7 +26,7 @@ def get_circuit(**kwargs):
             qc.cx(qr[i], qr[number_of_qubits])
 
     # hadamard gates
-    for i in range(number_of_qubits + 1):
+    for i in range(number_of_qubits):
         qc.h(qr[i])
 
     # measurement
