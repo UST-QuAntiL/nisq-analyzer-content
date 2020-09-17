@@ -17,8 +17,6 @@ def get_circuit(**kwargs):
     # hadamard gates
     for i in range(number_of_qubits + 1):
         qc.h(qr[i])
-
-    qc.barrier()
     
     qc.z(qr[number_of_qubits])
 
@@ -27,15 +25,11 @@ def get_circuit(**kwargs):
         if (s & (1 << i)):  # if bin(s)[i] = 1 then use cnot with ancilla
             qc.cx(qr[i], qr[number_of_qubits])
 
-    qc.barrier()
-
     # hadamard gates
     for i in range(number_of_qubits + 1):
         qc.h(qr[i])
 
     # measurement
-    qc.barrier(qr)
-
     for i in range(number_of_qubits):
         qc.measure(qr[i], cr[i])
 
