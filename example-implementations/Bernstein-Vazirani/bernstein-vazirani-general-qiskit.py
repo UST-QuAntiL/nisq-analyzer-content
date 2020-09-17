@@ -19,6 +19,8 @@ def get_circuit(**kwargs):
         qc.h(qr[i])
 
     qc.barrier()
+    
+    qc.z(qr[number_of_qubits])
 
     # inner product oracle
     for i in range(number_of_qubits):
