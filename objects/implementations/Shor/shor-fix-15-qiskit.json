@@ -23,7 +23,5 @@
                 "description": "Phases of N"
             }
         ]
-    },
-    "widthRule": "expectedWidth(W, shor-fix-15-qiskit) :- W is 8.",
-    "depthRule": "expectedDepth(D, shor-fix-15-qiskit) :- D is 7."
+    }
 }

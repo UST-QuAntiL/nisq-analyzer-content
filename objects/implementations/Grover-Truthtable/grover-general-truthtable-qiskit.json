@@ -23,7 +23,5 @@
                 "description": "Assignment of Boolean variables such that f evaluates to true"
             }
         ]
-    },
-    "widthRule": "expectedWidth(W, grover-general-truthtable-qiskit) :- W >= 2.",
-    "depthRule": "expectedDepth(D, grover-general-truthtable-qiskit) :- D >= 5."
+    }
 }
