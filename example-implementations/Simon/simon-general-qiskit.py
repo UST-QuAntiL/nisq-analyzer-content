@@ -3,7 +3,7 @@ from qiskit.aqua.components.oracles import TruthTableOracle
 
 
 def get_circuit(**kwargs):
-    oracle_string = kwargs["oracle"]   # input is binary String of a truth table, like '1000'
+    oracle_string = kwargs["s"]   # input is binary String of a truth table, like '1000'
 
     oracle = TruthTableOracle(oracle_string)
     simon = Simon(oracle)
