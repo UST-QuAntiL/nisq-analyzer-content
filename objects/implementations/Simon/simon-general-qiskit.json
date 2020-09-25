@@ -1,0 +1,27 @@
+{
+    "name": "simon-general-qiskit",
+    "implementedAlgorithm": ...uuid...,
+    "fileLocation": "https://raw.githubusercontent.com/UST-QuAntiL/nisq-analyzer-content/master/example-implementations/Simon/simon-general-qiskit.py",
+    "selectionRule": "processable(S, simon-general-qiskit) :- S =~ '^[01]+$', atom_length(S, X), X is X /\\ (-X).",
+    "sdk": "Qiskit",
+    "inputParameters": {
+        "parameters": [
+            {
+                "name": "S",
+                "type": "String",
+                "restriction": "S in {0,1}, not empty, length of S has to be a power of two",
+                "description": "Secret string defining the oracle"
+            }
+        ]
+    },
+    "outputParameters": {
+        "parameters": [
+            {
+                "name": "s",
+                "type": "String",
+                "restriction": "",
+                "description": "Searched secret string"
+            }
+        ]
+    }
+}

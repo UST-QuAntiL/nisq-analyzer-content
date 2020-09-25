@@ -2,15 +2,15 @@
     "name": "grover-general-sat-qiskit",
     "implementedAlgorithm": ...uuid...,
     "fileLocation": "https://raw.githubusercontent.com/UST-QuAntiL/nisq-analyzer-content/master/example-implementations/Grover-SAT/grover-general-sat-qiskit.py",
-    "selectionRule": "processable(Oracle, grover-general-sat-qiskit) :- Oracle =~ '^[0-9A-Za-z|&()~^ ]+$'.",
+    "selectionRule": "processable(Formula, grover-general-sat-qiskit) :- Formula =~ '^[0-9A-Za-z|&()~^ ]+$'.",
     "sdk": "Qiskit",
     "inputParameters": {
         "parameters": [
             {
-                "name": "Oracle",
+                "name": "Formula",
                 "type": "String",
-                "restriction": "Oracle has to be a Boolean function",
-                "description": "Oracle for grover"
+                "restriction": "Formula has to be a Boolean formula",
+                "description": "Boolean formula for grover"
             }
         ]
     },

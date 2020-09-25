@@ -2,15 +2,15 @@
     "name": "grover-fix-sat-qiskit",
     "implementedAlgorithm": ...uuid...,
     "fileLocation": "https://raw.githubusercontent.com/UST-QuAntiL/nisq-analyzer-content/master/example-implementations/Grover-SAT/grover-fix-sat-qiskit.py",
-    "selectionRule": "processable(Oracle, grover-fix-sat-qiskit) :- Oracle = '(A | B) & (A | ~B) & (~A | B)'.",
+    "selectionRule": "processable(Formula, grover-fix-sat-qiskit) :- Formula = '(A | B) & (A | ~B) & (~A | B)'.",
     "sdk": "Qiskit",
     "inputParameters": {
         "parameters": [
             {
-                "name": "Oracle",
+                "name": "Formula",
                 "type": "String",
-                "restriction": "Oracle = (A | B) & (A | ~B) & (~A | B)",
-                "description": "Oracle for grover"
+                "restriction": "Formula = (A | B) & (A | ~B) & (~A | B)",
+                "description": "Formula for grover"
             }
         ]
     },

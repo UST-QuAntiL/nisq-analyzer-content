@@ -3,7 +3,7 @@ from qiskit.aqua.components.oracles import LogicalExpressionOracle
 
 
 def get_circuit(**kwargs):
-    oracle_string = kwargs["oracle"]   # input is logical expression, like '(A | B) & (A | ~B) & (~A | B)'
+    oracle_string = kwargs["formula"]   # input is logical expression, like '(A | B) & (A | ~B) & (~A | B)'
 
     print(oracle_string)
     oracle = LogicalExpressionOracle(oracle_string)
