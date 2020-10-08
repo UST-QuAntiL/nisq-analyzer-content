@@ -1,0 +1,7 @@
+{
+    "name": "ibmq_5_yorktown",
+    "numberOfQubits": 5,
+    "t1": 555046.3748,
+    "maxGateTime": 569,
+    "supportedSdkIds": [...]
+}
