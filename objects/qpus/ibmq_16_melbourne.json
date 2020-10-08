@@ -1,0 +1,7 @@
+{
+	"name": "ibmq_16_melbourne",
+	"numberOfQubits": 15,
+	"t1": 54502.2906,
+	"maxGateTime": 1696,
+	"supportedSdkIds": [...]
+}
