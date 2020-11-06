@@ -2,10 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2 (Debian 12.2-2.pgdg100+1)
--- Dumped by pg_dump version 13.0 (Ubuntu 13.0-1.pgdg18.04+1)
-
--- Started on 2020-10-06 14:31:55 CEST
+-- Dumped from database version 12.4 (Debian 12.4-1.pgdg100+1)
+-- Dumped by pg_dump version 12.4 (Debian 12.4-1.pgdg100+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -19,8 +17,6 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- TOC entry 2982 (class 0 OID 16822)
--- Dependencies: 211
 -- Data for Name: sdk; Type: TABLE DATA; Schema: public; Owner: nisq
 --
 
@@ -28,8 +24,6 @@ INSERT INTO public.sdk VALUES ('93bb1be1-4d13-4c2b-9895-86e8bbb74abd', 'Qiskit')
 
 
 --
--- TOC entry 2975 (class 0 OID 16789)
--- Dependencies: 204
 -- Data for Name: implementation; Type: TABLE DATA; Schema: public; Owner: nisq
 --
 
@@ -43,40 +37,44 @@ INSERT INTO public.implementation VALUES ('803cfb36-f189-4e51-bf1e-dc3c50eb7ace'
 
 
 --
--- TOC entry 2980 (class 0 OID 16814)
--- Dependencies: 209
 -- Data for Name: qpu; Type: TABLE DATA; Schema: public; Owner: nisq
 --
 
+INSERT INTO public.qpu VALUES ('ab44dc01-b7c6-49d9-9a1f-d929fafdee73', 1696, 'ibmq_16_melbourne', 15, 54502.29);
+INSERT INTO public.qpu VALUES ('8b8fcecf-9fa3-4a5b-8017-334f194f186b', 569, 'ibmq_5_yorktown', 5, 555046.4);
 
 
 --
--- TOC entry 2973 (class 0 OID 16773)
--- Dependencies: 202
+-- Data for Name: analysis_result; Type: TABLE DATA; Schema: public; Owner: nisq
+--
+
+
+
+--
+-- Data for Name: analysis_result_input_parameters; Type: TABLE DATA; Schema: public; Owner: nisq
+--
+
+
+
+--
 -- Data for Name: execution_result; Type: TABLE DATA; Schema: public; Owner: nisq
 --
 
 
 
 --
--- TOC entry 2974 (class 0 OID 16781)
--- Dependencies: 203
 -- Data for Name: execution_result_input_parameters; Type: TABLE DATA; Schema: public; Owner: nisq
 --
 
 
 
 --
--- TOC entry 2976 (class 0 OID 16797)
--- Dependencies: 205
 -- Data for Name: implementation_execution_results; Type: TABLE DATA; Schema: public; Owner: nisq
 --
 
 
 
 --
--- TOC entry 2979 (class 0 OID 16806)
--- Dependencies: 208
 -- Data for Name: parameter; Type: TABLE DATA; Schema: public; Owner: nisq
 --
 
@@ -90,8 +88,6 @@ INSERT INTO public.parameter VALUES ('ec8e8638-bfe7-4e3e-90e1-018735f22cd8', 'Se
 
 
 --
--- TOC entry 2977 (class 0 OID 16800)
--- Dependencies: 206
 -- Data for Name: implementation_input_parameters; Type: TABLE DATA; Schema: public; Owner: nisq
 --
 
@@ -105,22 +101,18 @@ INSERT INTO public.implementation_input_parameters VALUES ('803cfb36-f189-4e51-b
 
 
 --
--- TOC entry 2978 (class 0 OID 16803)
--- Dependencies: 207
 -- Data for Name: implementation_output_parameters; Type: TABLE DATA; Schema: public; Owner: nisq
 --
 
 
 
 --
--- TOC entry 2981 (class 0 OID 16819)
--- Dependencies: 210
 -- Data for Name: qpu_sdk; Type: TABLE DATA; Schema: public; Owner: nisq
 --
 
+INSERT INTO public.qpu_sdk VALUES ('ab44dc01-b7c6-49d9-9a1f-d929fafdee73', '93bb1be1-4d13-4c2b-9895-86e8bbb74abd');
+INSERT INTO public.qpu_sdk VALUES ('8b8fcecf-9fa3-4a5b-8017-334f194f186b', '93bb1be1-4d13-4c2b-9895-86e8bbb74abd');
 
-
--- Completed on 2020-10-06 14:31:55 CEST
 
 --
 -- PostgreSQL database dump complete

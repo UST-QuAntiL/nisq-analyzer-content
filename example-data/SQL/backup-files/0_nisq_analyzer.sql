@@ -2,10 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2 (Debian 12.2-2.pgdg100+1)
--- Dumped by pg_dump version 13.0 (Ubuntu 13.0-1.pgdg18.04+1)
-
--- Started on 2020-10-06 14:30:32 CEST
+-- Dumped from database version 12.4 (Debian 12.4-1.pgdg100+1)
+-- Dumped by pg_dump version 12.4 (Debian 12.4-1.pgdg100+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -23,7 +21,36 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- TOC entry 202 (class 1259 OID 16773)
+-- Name: analysis_result; Type: TABLE; Schema: public; Owner: nisq
+--
+
+CREATE TABLE public.analysis_result (
+    id uuid NOT NULL,
+    analysed_depth integer NOT NULL,
+    analysed_width integer NOT NULL,
+    implemented_algorithm uuid,
+    "time" timestamp without time zone,
+    implementation_id uuid,
+    qpu_id uuid
+);
+
+
+ALTER TABLE public.analysis_result OWNER TO nisq;
+
+--
+-- Name: analysis_result_input_parameters; Type: TABLE; Schema: public; Owner: nisq
+--
+
+CREATE TABLE public.analysis_result_input_parameters (
+    analysis_result_id uuid NOT NULL,
+    input_parameters character varying(255),
+    input_parameters_key character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.analysis_result_input_parameters OWNER TO nisq;
+
+--
 -- Name: execution_result; Type: TABLE; Schema: public; Owner: nisq
 --
 
@@ -35,14 +62,14 @@ CREATE TABLE public.execution_result (
     status integer,
     status_code character varying(255),
     executed_implementation_id uuid,
-    executing_qpu_id uuid
+    executing_qpu_id uuid,
+    analysis_result_id uuid
 );
 
 
 ALTER TABLE public.execution_result OWNER TO nisq;
 
 --
--- TOC entry 203 (class 1259 OID 16781)
 -- Name: execution_result_input_parameters; Type: TABLE; Schema: public; Owner: nisq
 --
 
@@ -56,7 +83,6 @@ CREATE TABLE public.execution_result_input_parameters (
 ALTER TABLE public.execution_result_input_parameters OWNER TO nisq;
 
 --
--- TOC entry 204 (class 1259 OID 16789)
 -- Name: implementation; Type: TABLE; Schema: public; Owner: nisq
 --
 
@@ -75,7 +101,6 @@ CREATE TABLE public.implementation (
 ALTER TABLE public.implementation OWNER TO nisq;
 
 --
--- TOC entry 205 (class 1259 OID 16797)
 -- Name: implementation_execution_results; Type: TABLE; Schema: public; Owner: nisq
 --
 
@@ -88,7 +113,6 @@ CREATE TABLE public.implementation_execution_results (
 ALTER TABLE public.implementation_execution_results OWNER TO nisq;
 
 --
--- TOC entry 206 (class 1259 OID 16800)
 -- Name: implementation_input_parameters; Type: TABLE; Schema: public; Owner: nisq
 --
 
@@ -101,7 +125,6 @@ CREATE TABLE public.implementation_input_parameters (
 ALTER TABLE public.implementation_input_parameters OWNER TO nisq;
 
 --
--- TOC entry 207 (class 1259 OID 16803)
 -- Name: implementation_output_parameters; Type: TABLE; Schema: public; Owner: nisq
 --
 
@@ -114,7 +137,6 @@ CREATE TABLE public.implementation_output_parameters (
 ALTER TABLE public.implementation_output_parameters OWNER TO nisq;
 
 --
--- TOC entry 208 (class 1259 OID 16806)
 -- Name: parameter; Type: TABLE; Schema: public; Owner: nisq
 --
 
@@ -130,7 +152,6 @@ CREATE TABLE public.parameter (
 ALTER TABLE public.parameter OWNER TO nisq;
 
 --
--- TOC entry 209 (class 1259 OID 16814)
 -- Name: qpu; Type: TABLE; Schema: public; Owner: nisq
 --
 
@@ -146,7 +167,6 @@ CREATE TABLE public.qpu (
 ALTER TABLE public.qpu OWNER TO nisq;
 
 --
--- TOC entry 210 (class 1259 OID 16819)
 -- Name: qpu_sdk; Type: TABLE; Schema: public; Owner: nisq
 --
 
@@ -159,7 +179,6 @@ CREATE TABLE public.qpu_sdk (
 ALTER TABLE public.qpu_sdk OWNER TO nisq;
 
 --
--- TOC entry 211 (class 1259 OID 16822)
 -- Name: sdk; Type: TABLE; Schema: public; Owner: nisq
 --
 
@@ -172,7 +191,22 @@ CREATE TABLE public.sdk (
 ALTER TABLE public.sdk OWNER TO nisq;
 
 --
--- TOC entry 2818 (class 2606 OID 16788)
+-- Name: analysis_result_input_parameters analysis_result_input_parameters_pkey; Type: CONSTRAINT; Schema: public; Owner: nisq
+--
+
+ALTER TABLE ONLY public.analysis_result_input_parameters
+    ADD CONSTRAINT analysis_result_input_parameters_pkey PRIMARY KEY (analysis_result_id, input_parameters_key);
+
+
+--
+-- Name: analysis_result analysis_result_pkey; Type: CONSTRAINT; Schema: public; Owner: nisq
+--
+
+ALTER TABLE ONLY public.analysis_result
+    ADD CONSTRAINT analysis_result_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: execution_result_input_parameters execution_result_input_parameters_pkey; Type: CONSTRAINT; Schema: public; Owner: nisq
 --
 
@@ -181,7 +215,6 @@ ALTER TABLE ONLY public.execution_result_input_parameters
 
 
 --
--- TOC entry 2816 (class 2606 OID 16780)
 -- Name: execution_result execution_result_pkey; Type: CONSTRAINT; Schema: public; Owner: nisq
 --
 
@@ -190,7 +223,6 @@ ALTER TABLE ONLY public.execution_result
 
 
 --
--- TOC entry 2820 (class 2606 OID 16796)
 -- Name: implementation implementation_pkey; Type: CONSTRAINT; Schema: public; Owner: nisq
 --
 
@@ -199,7 +231,6 @@ ALTER TABLE ONLY public.implementation
 
 
 --
--- TOC entry 2828 (class 2606 OID 16813)
 -- Name: parameter parameter_pkey; Type: CONSTRAINT; Schema: public; Owner: nisq
 --
 
@@ -208,7 +239,6 @@ ALTER TABLE ONLY public.parameter
 
 
 --
--- TOC entry 2830 (class 2606 OID 16818)
 -- Name: qpu qpu_pkey; Type: CONSTRAINT; Schema: public; Owner: nisq
 --
 
@@ -217,7 +247,6 @@ ALTER TABLE ONLY public.qpu
 
 
 --
--- TOC entry 2832 (class 2606 OID 16826)
 -- Name: sdk sdk_pkey; Type: CONSTRAINT; Schema: public; Owner: nisq
 --
 
@@ -226,7 +255,6 @@ ALTER TABLE ONLY public.sdk
 
 
 --
--- TOC entry 2824 (class 2606 OID 16830)
 -- Name: implementation_input_parameters uk_cok59x3vgd8xwhb4fwav79t10; Type: CONSTRAINT; Schema: public; Owner: nisq
 --
 
@@ -235,7 +263,6 @@ ALTER TABLE ONLY public.implementation_input_parameters
 
 
 --
--- TOC entry 2826 (class 2606 OID 16832)
 -- Name: implementation_output_parameters uk_qnecksht5j0iksderlbdyx4v; Type: CONSTRAINT; Schema: public; Owner: nisq
 --
 
@@ -244,7 +271,6 @@ ALTER TABLE ONLY public.implementation_output_parameters
 
 
 --
--- TOC entry 2822 (class 2606 OID 16828)
 -- Name: implementation_execution_results uk_qq2knbyl7yfs28gbcga9oucj; Type: CONSTRAINT; Schema: public; Owner: nisq
 --
 
@@ -253,7 +279,6 @@ ALTER TABLE ONLY public.implementation_execution_results
 
 
 --
--- TOC entry 2834 (class 2606 OID 16834)
 -- Name: sdk uk_tie0wxox8cj4d5nrmn1y9wif1; Type: CONSTRAINT; Schema: public; Owner: nisq
 --
 
@@ -262,7 +287,14 @@ ALTER TABLE ONLY public.sdk
 
 
 --
--- TOC entry 2842 (class 2606 OID 16870)
+-- Name: analysis_result_input_parameters fk17iggcapwf03u4jjs8saabweb; Type: FK CONSTRAINT; Schema: public; Owner: nisq
+--
+
+ALTER TABLE ONLY public.analysis_result_input_parameters
+    ADD CONSTRAINT fk17iggcapwf03u4jjs8saabweb FOREIGN KEY (analysis_result_id) REFERENCES public.analysis_result(id);
+
+
+--
 -- Name: implementation_input_parameters fk2ac09oep1t8yr2wo51yk5l9ht; Type: FK CONSTRAINT; Schema: public; Owner: nisq
 --
 
@@ -271,7 +303,6 @@ ALTER TABLE ONLY public.implementation_input_parameters
 
 
 --
--- TOC entry 2841 (class 2606 OID 16865)
 -- Name: implementation_input_parameters fk66ltck2e65pwb4a0sel5rq8f1; Type: FK CONSTRAINT; Schema: public; Owner: nisq
 --
 
@@ -280,7 +311,14 @@ ALTER TABLE ONLY public.implementation_input_parameters
 
 
 --
--- TOC entry 2843 (class 2606 OID 16875)
+-- Name: analysis_result fk6ikotsmrk7h12vk72fhhro1w; Type: FK CONSTRAINT; Schema: public; Owner: nisq
+--
+
+ALTER TABLE ONLY public.analysis_result
+    ADD CONSTRAINT fk6ikotsmrk7h12vk72fhhro1w FOREIGN KEY (qpu_id) REFERENCES public.qpu(id);
+
+
+--
 -- Name: implementation_output_parameters fk9dfdtclo8y0v87b1iebr3p6lw; Type: FK CONSTRAINT; Schema: public; Owner: nisq
 --
 
@@ -289,7 +327,6 @@ ALTER TABLE ONLY public.implementation_output_parameters
 
 
 --
--- TOC entry 2839 (class 2606 OID 16855)
 -- Name: implementation_execution_results fkcbsjlbnwq7x0gvltksi1y1205; Type: FK CONSTRAINT; Schema: public; Owner: nisq
 --
 
@@ -298,7 +335,6 @@ ALTER TABLE ONLY public.implementation_execution_results
 
 
 --
--- TOC entry 2845 (class 2606 OID 16885)
 -- Name: qpu_sdk fkd0kb6d0d6ejxcwmiwi2sd2s4e; Type: FK CONSTRAINT; Schema: public; Owner: nisq
 --
 
@@ -307,7 +343,6 @@ ALTER TABLE ONLY public.qpu_sdk
 
 
 --
--- TOC entry 2844 (class 2606 OID 16880)
 -- Name: implementation_output_parameters fkhor56dtojk0mt63jf8hi565gx; Type: FK CONSTRAINT; Schema: public; Owner: nisq
 --
 
@@ -316,7 +351,6 @@ ALTER TABLE ONLY public.implementation_output_parameters
 
 
 --
--- TOC entry 2835 (class 2606 OID 16835)
 -- Name: execution_result fkie5mgayvkqvlay8eylv01r29g; Type: FK CONSTRAINT; Schema: public; Owner: nisq
 --
 
@@ -325,7 +359,6 @@ ALTER TABLE ONLY public.execution_result
 
 
 --
--- TOC entry 2846 (class 2606 OID 16890)
 -- Name: qpu_sdk fkj2odpkvccrctv2nycenj12hml; Type: FK CONSTRAINT; Schema: public; Owner: nisq
 --
 
@@ -334,7 +367,14 @@ ALTER TABLE ONLY public.qpu_sdk
 
 
 --
--- TOC entry 2837 (class 2606 OID 16845)
+-- Name: analysis_result fkkg46r78o8o1brxnvbrlvg1mqo; Type: FK CONSTRAINT; Schema: public; Owner: nisq
+--
+
+ALTER TABLE ONLY public.analysis_result
+    ADD CONSTRAINT fkkg46r78o8o1brxnvbrlvg1mqo FOREIGN KEY (implementation_id) REFERENCES public.implementation(id);
+
+
+--
 -- Name: execution_result_input_parameters fkkvyn4g4vs5uo3tsm1rsa8s1hd; Type: FK CONSTRAINT; Schema: public; Owner: nisq
 --
 
@@ -343,7 +383,14 @@ ALTER TABLE ONLY public.execution_result_input_parameters
 
 
 --
--- TOC entry 2838 (class 2606 OID 16850)
+-- Name: execution_result fkld7avvfa0sgn4vefk0hycr3pq; Type: FK CONSTRAINT; Schema: public; Owner: nisq
+--
+
+ALTER TABLE ONLY public.execution_result
+    ADD CONSTRAINT fkld7avvfa0sgn4vefk0hycr3pq FOREIGN KEY (analysis_result_id) REFERENCES public.analysis_result(id);
+
+
+--
 -- Name: implementation fkn33hfev7eeu6je19kat24j6b0; Type: FK CONSTRAINT; Schema: public; Owner: nisq
 --
 
@@ -352,7 +399,6 @@ ALTER TABLE ONLY public.implementation
 
 
 --
--- TOC entry 2836 (class 2606 OID 16840)
 -- Name: execution_result fkofh9mmuaonk6ci7orkukw9eo4; Type: FK CONSTRAINT; Schema: public; Owner: nisq
 --
 
@@ -361,15 +407,12 @@ ALTER TABLE ONLY public.execution_result
 
 
 --
--- TOC entry 2840 (class 2606 OID 16860)
 -- Name: implementation_execution_results fkt54sku19teb6etv0a9lcitk6g; Type: FK CONSTRAINT; Schema: public; Owner: nisq
 --
 
 ALTER TABLE ONLY public.implementation_execution_results
     ADD CONSTRAINT fkt54sku19teb6etv0a9lcitk6g FOREIGN KEY (implementation_id) REFERENCES public.implementation(id);
 
-
--- Completed on 2020-10-06 14:30:32 CEST
 
 --
 -- PostgreSQL database dump complete
