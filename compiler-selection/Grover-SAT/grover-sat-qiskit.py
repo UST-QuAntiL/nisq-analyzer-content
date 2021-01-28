@@ -60,7 +60,3 @@ qc.h(q[0])
 qc.h(q[1])
 qc.measure(q[0], c[0])
 qc.measure(q[1], c[1])
-
-
-def get_circuit(**kwargs):
-    return qc
