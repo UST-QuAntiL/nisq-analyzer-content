@@ -10,12 +10,11 @@ services:
     image: quantil-db
     environment:
       # specifies user:pw for each container
-      POSTGRES_USERS: 'planqk:planqk|nisq:nisq|patternpedia:patternpedia|qprov:qprov'
+      POSTGRES_USERS: 'planqk:planqk|nisq:nisq|qprov:qprov'
       # specifies db name for each container
-      POSTGRES_DATABASES: 'planqk:planqk|nisq:nisq|patternpedia:patternpedia|qprov:qprov'
+      POSTGRES_DATABASES: 'planqk:planqk|nisq:nisq|qprov:qprov'
       ATLAS_DB: planqk
       NISQ_DB: nisq
-      PATTERNPEDIA_DB: patternpedia
       QPROV_DB: qprov
     #volumes:
       # use this volume to save the postgres data
@@ -52,19 +51,6 @@ services:
       - "8080:8080"
     networks:
       - default
-  pattern-atlas-api:
-    image: patternpedia/patternrepo-api:v1.0.2
-    environment:
-      JDBC_DATABASE_URL: db
-      JDBC_DATABASE_NAME: patternpedia
-      JDBC_DATABASE_USERNAME: patternpedia
-      JDBC_DATABASE_PASSWORD: patternpedia
-      JDBC_DATABASE_PORT: 5432
-      API_PORT: 8080
-    ports:
-      - '8082:8080'
-    networks:
-      - default
   nisq-analyzer:
     image: planqk/nisq-analyzer:v1.0.0
     environment:
@@ -80,13 +66,6 @@ services:
      - '8081:8080'
     networks:
      - default
-
-  # used by qc-atlas-ui to render latex
-  latex-renderer:
-    image: planqk/latex-renderer:v1.0.1
-    ports:
-      - "8083:8082"
-
   qprov:
     image: planqk/qprov:latest
     environment:
@@ -98,7 +77,7 @@ services:
     ports:
       - "8084:8080"
     networks:
-      - default  
+      - default
   qprov-collector-ibm:
     image: planqk/qprov-collector:latest
     environment:
@@ -107,7 +86,7 @@ services:
       POSTGRES_USER: qprov
       POSTGRES_PASSWORD: qprov
       POSTGRES_DB: qprov
-      QPROV_IBMQ_TOKEN: 'beadac2043858c2327e26472142f05435621c986e2cc206071d94074919312e3649f2f9a0fd6e223dce46acb2264e45c01d81be1f570712cf7c190817318addd'
+      QPROV_IBMQ_TOKEN: ''
       QPROV_IBMQ_EXECUTE_CIRCUITS: 'false'
       QPROV_IBMQ_AUTO_COLLECT: 'true'
       QPROV_IBMQ_AUTO_COLLECT_INTERVAL: 60
@@ -231,7 +210,7 @@ services:
       - "6379:6379"
     networks:
       - default
-  
+
 networks:
   default:
     driver: bridge
