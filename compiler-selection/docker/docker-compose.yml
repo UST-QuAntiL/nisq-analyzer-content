@@ -83,7 +83,7 @@ services:
      - default
 
   quantum-transpiler:
-    image: planqk/quantum-transpiler:latest
+    image: planqk/quantum-transpiler-backend:latest
     ports:
      - '5000:5000'
     networks:
