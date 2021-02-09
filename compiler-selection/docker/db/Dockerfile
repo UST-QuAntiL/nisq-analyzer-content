@@ -22,7 +22,6 @@ RUN apt-get update -qq && apt-get install -qqy \
 COPY clone-data-repo.sh clone-data-repo.sh
 COPY setup-atlas.sh setup-atlas.sh
 COPY setup-nisq.sh setup-nisq.sh
-COPY setup-patternatlas.sh setup-patternatlas.sh
 
 # if ssh key is set, clone data repos containing sql dumbs for initalization and start postgres afterwards
 CMD  chmod 700 clone-data-repo.sh && ./clone-data-repo.sh && su postgres -c "/usr/local/bin/docker-entrypoint.sh postgres"
