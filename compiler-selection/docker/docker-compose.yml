@@ -66,7 +66,7 @@ services:
       # Configure QPROV connection
       QPROV_HOSTNAME: qprov
       QPROV_PORT: 8080
-      TRANSLATOR_HOSTNAME: translator
+      TRANSLATOR_HOSTNAME: quantum-transpiler
       TRANSLATOR_PORT: 8080
 
       
@@ -81,6 +81,21 @@ services:
      - '8081:8080'
     networks:
      - default
+
+  quantum-transpiler:
+    image: planqk/quantum-transpiler:latest
+    ports:
+     - '5000:5000'
+    networks:
+     - default
+  
+  quantum-transpiler-frontend:
+    image: planqk/quantum-transpiler-frontend:latest
+    ports:
+     - '8082:80'
+    networks:
+     - default
+  
   qprov:
     image: planqk/qprov:latest
     environment:
