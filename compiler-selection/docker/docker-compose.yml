@@ -83,7 +83,7 @@ services:
   quantum-transpiler:
     image: planqk/quantum-transpiler-backend:compiler-selection
     ports:
-     - '5790:5000'
+     - '5000:5000'
     networks:
      - default
 
