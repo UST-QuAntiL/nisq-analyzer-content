@@ -64,19 +64,25 @@ For using IBMQ Backends as compilation targets, please insert your Qiksit token 
 
 1. Start the qc-atlas-ui at <http://localhost:80>.
 
-2. Go to "Execution Environments" > "Software Platforms" and add a new SDK by choosing its name.
+2. Go to "Execution Environments" > "Software Platforms" and add a new SDK (button under "Search") by choosing its name.
+![alt text](./pictures/add-SDK.png "Add SDK")
 
-3. Add a new algorithm by inserting a name and choosing its computation model.
+3. Add a new algorithm (button under "Search") by inserting a name and choosing its computation model.
+![alt text](./pictures/add-algorithm.png "Add algorithm")
 
 4. Add a new implementation to the algorithm by choosing a name for the circuit you want to compile.
+![alt text](./pictures/add-implementation.png "Add implementation")
 
 5. Go to the "Selecion Criteria" tab > insert the URL of the raw circuit (e.g. [this example](https://raw.githubusercontent.com/UST-QuAntiL/nisq-analyzer-content/master/compiler-selection/Shor/shor-fix-15-qiskit.py)), specifiy its SDK and select its language.
+![alt text](./pictures/implementation-selection-criteria.png "Add selection criteria")
 
 6. Go to the "Execution" tab > click "New Compilation" and specify vendor, compilation target QPU, and insert you token of the Qiskit SDK (Note: only access to IBMQ backends is currently available, however, the [QVM](https://pyquil-docs.rigetti.com/en/latest/qvm.html#the-quantum-virtual-machine-qvm) of Forest for simulating QPUs can also be used, e.g. vendor="Rigetti", QPU="9q-qvm", token="123").
+![alt text](./pictures/compilation-results.png "compilation results")
 
 7. Wait a few seconds > click the "Refresh" button.
 
 8. For executing a compiled circuit: click "Execute" > wait a bit > click "Refresh" > click "Show result".
+![alt text](./pictures/show-execution-result.png "show execution result")
 
 ## Haftungsausschluss
 
