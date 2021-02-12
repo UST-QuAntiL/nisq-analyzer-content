@@ -24,7 +24,7 @@ services:
     networks:
       - default
   qc-atlas-ui:
-    image: planqk/qc-atlas-ui:latest
+    image: planqk/qc-atlas-ui:compiler-selection
     environment:
       # because the requests are performed from the browser and not
       # from the container itself we have to specify localhost here
@@ -38,7 +38,7 @@ services:
     networks:
       - default
   qc-atlas:
-    image: planqk/atlas:latest
+    image: planqk/atlas:compiler-selection
     environment:
       POSTGRES_HOSTNAME: db
       POSTGRES_PORT: 5432
@@ -50,7 +50,7 @@ services:
     networks:
       - default
   nisq-analyzer:
-    image: planqk/nisq-analyzer:latest
+    image: planqk/nisq-analyzer:compiler-selection
     environment:
       POSTGRES_HOSTNAME: db
       POSTGRES_PORT: 5432
@@ -81,21 +81,21 @@ services:
      - default
 
   quantum-transpiler:
-    image: planqk/quantum-transpiler-backend:latest
+    image: planqk/quantum-transpiler-backend:compiler-selection
     ports:
-     - '5000:5000'
+     - '5790:5000'
     networks:
      - default
 
   quantum-transpiler-frontend:
-    image: planqk/quantum-transpiler-frontend:latest
+    image: planqk/quantum-transpiler-frontend:compiler-selection
     ports:
      - '8082:80'
     networks:
      - default
 
   qprov:
-    image: planqk/qprov:latest
+    image: planqk/qprov:compiler-selection
     environment:
       POSTGRES_HOSTNAME: db
       POSTGRES_PORT: 5432
@@ -107,7 +107,7 @@ services:
     networks:
       - default
   qprov-collector-ibm:
-    image: planqk/qprov-collector:latest
+    image: planqk/qprov-collector:compiler-selection
     environment:
       POSTGRES_HOSTNAME: db
       POSTGRES_PORT: 5432
@@ -128,7 +128,7 @@ services:
 
   # used by nisq analyzer for execution and transpilation
   qiskit-service:
-    image: planqk/qiskit-service:latest
+    image: planqk/qiskit-service:compiler-selection
     command: sh /app/startup.sh
     ports:
       - "5003:5000"
@@ -141,7 +141,7 @@ services:
       - default
 
   qiskit-rq-worker:
-    image: planqk/qiskit-service:latest
+    image: planqk/qiskit-service:compiler-selection
     command: rq worker --url redis://redis qiskit-service_execute
     environment:
       - REDIS_URL=redis://redis
@@ -152,7 +152,7 @@ services:
       - redis
 
   forest-service:
-    image: planqk/forest-service:latest
+    image: planqk/forest-service:compiler-selection
     command: sh /app/startup.sh
     ports:
       - "5002:5000"
@@ -169,7 +169,7 @@ services:
       - default
 
   forest-rq-worker:
-    image: planqk/forest-service:latest
+    image: planqk/forest-service:compiler-selection
     command: rq worker --url redis://redis forest-service_execute
     environment:
       - REDIS_URL=redis://redis
@@ -186,7 +186,7 @@ services:
       - default
 
   pytket-service:
-    image: planqk/pytket-service:latest
+    image: planqk/pytket-service:compiler-selection
     command: sh /app/startup.sh
     ports:
       - "5001:5000"
@@ -201,7 +201,7 @@ services:
       - default
 
   pytket-rq-worker:
-    image: planqk/pytket-service:latest
+    image: planqk/pytket-service:compiler-selection
     command: rq worker --url redis://redis pytket-service_execute
     environment:
       - REDIS_URL=redis://redis
