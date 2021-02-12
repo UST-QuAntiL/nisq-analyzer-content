@@ -1,9 +1,10 @@
 # compiler-selection
 
+This repository contains the docker-compose and sample circuits for the compilation of a certain quantum circuit for several quantum compilers supporting the selection of the most suitable compiled circuit and execute it.
 
-# Dockerized compiler-selection
+## Dockerized compiler-selection
 
-Docker Compose file for running the entire compiler-selection.
+Docker Compose file for running the entire compiler-selection environment.
 
 The fastest way to get started is using [Docker Compose](https://docs.docker.com/compose/):
 
@@ -59,7 +60,23 @@ docker-compose logs -f qc-atlas db
 
 ### Executing compiler-selection via QC-Atlas-UI
 
+For using IBMQ Backends as compilation targets, please insert your Qiksit token into the docker-compose between the simple quotes at line `QPROV_IBMQ_TOKEN: ''`.
 
+1. Start the qc-atlas-ui at <http://localhost:80>.
+
+2. Go to "Execution Environments" > "Software Platforms" and add a new SDK by choosing its name.
+
+3. Add a new algorithm by inserting a name and choosing its computation model.
+
+4. Add a new implementation to the algorithm by choosing a name for the circuit you want to compile.
+
+5. Go to the "Selecion Criteria" tab > insert the URL of the raw circuit (e.g. [this example](https://raw.githubusercontent.com/UST-QuAntiL/nisq-analyzer-content/master/compiler-selection/Shor/shor-fix-15-qiskit.py)), specifiy its SDK and select its language.
+
+6. Go to the "Execution" tab > click "New Compilation" and specify vendor, compilation target QPU, and insert you token of the Qiskit SDK (Note: only access to IBMQ backends is currently available, however, the [QVM](https://pyquil-docs.rigetti.com/en/latest/qvm.html#the-quantum-virtual-machine-qvm) of Forest for simulating QPUs can also be used, e.g. vendor="Rigetti", QPU="9q-qvm", token="123").
+
+7. Wait a few seconds > click the "Refresh" button.
+
+8. For executing a compiled circuit: click "Execute" > wait a bit > click "Refresh" > click "Show result".
 
 ## Haftungsausschluss
 
