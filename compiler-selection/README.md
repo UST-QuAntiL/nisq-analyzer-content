@@ -2,7 +2,7 @@
 
 This repository contains the docker-compose and sample circuits for the compilation of a certain quantum circuit for several quantum compilers supporting the selection of the most suitable compiled circuit and execute it.
 
-A demo video can be viewed here [here](https://youtu.be/I5l8vaA-zO8).
+A demo video can be viewed here: [https://youtu.be/I5l8vaA-zO8](https://youtu.be/I5l8vaA-zO8).
 
 ## Dockerized compiler-selection
 
