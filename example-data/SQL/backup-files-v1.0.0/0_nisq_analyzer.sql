@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.5 (Debian 12.5-1.pgdg100+1)
--- Dumped by pg_dump version 12.5 (Debian 12.5-1.pgdg100+1)
+-- Dumped from database version 12.4 (Debian 12.4-1.pgdg100+1)
+-- Dumped by pg_dump version 12.4 (Debian 12.4-1.pgdg100+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -26,14 +26,12 @@ SET default_table_access_method = heap;
 
 CREATE TABLE public.analysis_result (
     id uuid NOT NULL,
-    analyzed_depth integer NOT NULL,
-    analyzed_width integer NOT NULL,
+    analysed_depth integer NOT NULL,
+    analysed_width integer NOT NULL,
     implemented_algorithm uuid,
-    provider character varying(255),
-    qpu character varying(255),
-    sdk_connector character varying(255),
     "time" timestamp without time zone,
-    implementation_id uuid
+    implementation_id uuid,
+    qpu_id uuid
 );
 
 
@@ -53,67 +51,36 @@ CREATE TABLE public.analysis_result_input_parameters (
 ALTER TABLE public.analysis_result_input_parameters OWNER TO nisq;
 
 --
--- Name: compilation_job; Type: TABLE; Schema: public; Owner: nisq
---
-
-CREATE TABLE public.compilation_job (
-    id uuid NOT NULL,
-    ready boolean NOT NULL
-);
-
-
-ALTER TABLE public.compilation_job OWNER TO nisq;
-
---
--- Name: compilation_job_job_results; Type: TABLE; Schema: public; Owner: nisq
---
-
-CREATE TABLE public.compilation_job_job_results (
-    compilation_job_id uuid NOT NULL,
-    job_results_id uuid NOT NULL
-);
-
-
-ALTER TABLE public.compilation_job_job_results OWNER TO nisq;
-
---
--- Name: compilation_result; Type: TABLE; Schema: public; Owner: nisq
---
-
-CREATE TABLE public.compilation_result (
-    id uuid NOT NULL,
-    analyzed_depth integer NOT NULL,
-    analyzed_width integer NOT NULL,
-    circuit_name character varying(255),
-    compiler character varying(255),
-    initial_circuit text,
-    provider character varying(255),
-    qpu character varying(255),
-    "time" timestamp without time zone,
-    token character varying(255),
-    transpiled_circuit text,
-    transpiled_language character varying(255)
-);
-
-
-ALTER TABLE public.compilation_result OWNER TO nisq;
-
---
 -- Name: execution_result; Type: TABLE; Schema: public; Owner: nisq
 --
 
 CREATE TABLE public.execution_result (
     id uuid NOT NULL,
+    analyzed_depth integer NOT NULL,
+    analyzed_width integer NOT NULL,
     result text,
     status integer,
     status_code character varying(255),
-    analysis_result_id uuid,
-    compilation_result_id uuid,
-    executed_implementation_id uuid
+    executed_implementation_id uuid,
+    executing_qpu_id uuid,
+    analysis_result_id uuid
 );
 
 
 ALTER TABLE public.execution_result OWNER TO nisq;
+
+--
+-- Name: execution_result_input_parameters; Type: TABLE; Schema: public; Owner: nisq
+--
+
+CREATE TABLE public.execution_result_input_parameters (
+    execution_result_id uuid NOT NULL,
+    input_parameters character varying(255),
+    input_parameters_key character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.execution_result_input_parameters OWNER TO nisq;
 
 --
 -- Name: implementation; Type: TABLE; Schema: public; Owner: nisq
@@ -121,11 +88,12 @@ ALTER TABLE public.execution_result OWNER TO nisq;
 
 CREATE TABLE public.implementation (
     id uuid NOT NULL,
+    depth_rule character varying(255),
     file_location character varying(255),
     implemented_algorithm uuid,
-    language character varying(255),
     name character varying(255),
     selection_rule character varying(255),
+    width_rule character varying(255),
     sdk_id uuid
 );
 
@@ -184,6 +152,33 @@ CREATE TABLE public.parameter (
 ALTER TABLE public.parameter OWNER TO nisq;
 
 --
+-- Name: qpu; Type: TABLE; Schema: public; Owner: nisq
+--
+
+CREATE TABLE public.qpu (
+    id uuid NOT NULL,
+    max_gate_time real NOT NULL,
+    name character varying(255),
+    qubit_count integer NOT NULL,
+    t1 real NOT NULL
+);
+
+
+ALTER TABLE public.qpu OWNER TO nisq;
+
+--
+-- Name: qpu_sdk; Type: TABLE; Schema: public; Owner: nisq
+--
+
+CREATE TABLE public.qpu_sdk (
+    qpu_id uuid NOT NULL,
+    sdk_id uuid NOT NULL
+);
+
+
+ALTER TABLE public.qpu_sdk OWNER TO nisq;
+
+--
 -- Name: sdk; Type: TABLE; Schema: public; Owner: nisq
 --
 
@@ -212,19 +207,11 @@ ALTER TABLE ONLY public.analysis_result
 
 
 --
--- Name: compilation_job compilation_job_pkey; Type: CONSTRAINT; Schema: public; Owner: nisq
+-- Name: execution_result_input_parameters execution_result_input_parameters_pkey; Type: CONSTRAINT; Schema: public; Owner: nisq
 --
 
-ALTER TABLE ONLY public.compilation_job
-    ADD CONSTRAINT compilation_job_pkey PRIMARY KEY (id);
-
-
---
--- Name: compilation_result compilation_result_pkey; Type: CONSTRAINT; Schema: public; Owner: nisq
---
-
-ALTER TABLE ONLY public.compilation_result
-    ADD CONSTRAINT compilation_result_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.execution_result_input_parameters
+    ADD CONSTRAINT execution_result_input_parameters_pkey PRIMARY KEY (execution_result_id, input_parameters_key);
 
 
 --
@@ -252,19 +239,19 @@ ALTER TABLE ONLY public.parameter
 
 
 --
+-- Name: qpu qpu_pkey; Type: CONSTRAINT; Schema: public; Owner: nisq
+--
+
+ALTER TABLE ONLY public.qpu
+    ADD CONSTRAINT qpu_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: sdk sdk_pkey; Type: CONSTRAINT; Schema: public; Owner: nisq
 --
 
 ALTER TABLE ONLY public.sdk
     ADD CONSTRAINT sdk_pkey PRIMARY KEY (id);
-
-
---
--- Name: compilation_job_job_results uk_28skth2ceqc642wia5j56j4vs; Type: CONSTRAINT; Schema: public; Owner: nisq
---
-
-ALTER TABLE ONLY public.compilation_job_job_results
-    ADD CONSTRAINT uk_28skth2ceqc642wia5j56j4vs UNIQUE (job_results_id);
 
 
 --
@@ -316,19 +303,19 @@ ALTER TABLE ONLY public.implementation_input_parameters
 
 
 --
--- Name: compilation_job_job_results fk3bim70bchqfnydkljy7f0blw0; Type: FK CONSTRAINT; Schema: public; Owner: nisq
---
-
-ALTER TABLE ONLY public.compilation_job_job_results
-    ADD CONSTRAINT fk3bim70bchqfnydkljy7f0blw0 FOREIGN KEY (job_results_id) REFERENCES public.compilation_result(id);
-
-
---
 -- Name: implementation_input_parameters fk66ltck2e65pwb4a0sel5rq8f1; Type: FK CONSTRAINT; Schema: public; Owner: nisq
 --
 
 ALTER TABLE ONLY public.implementation_input_parameters
     ADD CONSTRAINT fk66ltck2e65pwb4a0sel5rq8f1 FOREIGN KEY (input_parameters_id) REFERENCES public.parameter(id);
+
+
+--
+-- Name: analysis_result fk6ikotsmrk7h12vk72fhhro1w; Type: FK CONSTRAINT; Schema: public; Owner: nisq
+--
+
+ALTER TABLE ONLY public.analysis_result
+    ADD CONSTRAINT fk6ikotsmrk7h12vk72fhhro1w FOREIGN KEY (qpu_id) REFERENCES public.qpu(id);
 
 
 --
@@ -348,11 +335,11 @@ ALTER TABLE ONLY public.implementation_execution_results
 
 
 --
--- Name: compilation_job_job_results fkd1efpsafu9jpgbkh8w3j6t112; Type: FK CONSTRAINT; Schema: public; Owner: nisq
+-- Name: qpu_sdk fkd0kb6d0d6ejxcwmiwi2sd2s4e; Type: FK CONSTRAINT; Schema: public; Owner: nisq
 --
 
-ALTER TABLE ONLY public.compilation_job_job_results
-    ADD CONSTRAINT fkd1efpsafu9jpgbkh8w3j6t112 FOREIGN KEY (compilation_job_id) REFERENCES public.compilation_job(id);
+ALTER TABLE ONLY public.qpu_sdk
+    ADD CONSTRAINT fkd0kb6d0d6ejxcwmiwi2sd2s4e FOREIGN KEY (sdk_id) REFERENCES public.sdk(id);
 
 
 --
@@ -372,11 +359,27 @@ ALTER TABLE ONLY public.execution_result
 
 
 --
+-- Name: qpu_sdk fkj2odpkvccrctv2nycenj12hml; Type: FK CONSTRAINT; Schema: public; Owner: nisq
+--
+
+ALTER TABLE ONLY public.qpu_sdk
+    ADD CONSTRAINT fkj2odpkvccrctv2nycenj12hml FOREIGN KEY (qpu_id) REFERENCES public.qpu(id);
+
+
+--
 -- Name: analysis_result fkkg46r78o8o1brxnvbrlvg1mqo; Type: FK CONSTRAINT; Schema: public; Owner: nisq
 --
 
 ALTER TABLE ONLY public.analysis_result
     ADD CONSTRAINT fkkg46r78o8o1brxnvbrlvg1mqo FOREIGN KEY (implementation_id) REFERENCES public.implementation(id);
+
+
+--
+-- Name: execution_result_input_parameters fkkvyn4g4vs5uo3tsm1rsa8s1hd; Type: FK CONSTRAINT; Schema: public; Owner: nisq
+--
+
+ALTER TABLE ONLY public.execution_result_input_parameters
+    ADD CONSTRAINT fkkvyn4g4vs5uo3tsm1rsa8s1hd FOREIGN KEY (execution_result_id) REFERENCES public.execution_result(id);
 
 
 --
@@ -396,11 +399,11 @@ ALTER TABLE ONLY public.implementation
 
 
 --
--- Name: execution_result fkr2fnw3lld5ndb46wjbdiqutkk; Type: FK CONSTRAINT; Schema: public; Owner: nisq
+-- Name: execution_result fkofh9mmuaonk6ci7orkukw9eo4; Type: FK CONSTRAINT; Schema: public; Owner: nisq
 --
 
 ALTER TABLE ONLY public.execution_result
-    ADD CONSTRAINT fkr2fnw3lld5ndb46wjbdiqutkk FOREIGN KEY (compilation_result_id) REFERENCES public.compilation_result(id);
+    ADD CONSTRAINT fkofh9mmuaonk6ci7orkukw9eo4 FOREIGN KEY (executing_qpu_id) REFERENCES public.qpu(id);
 
 
 --
