@@ -4,6 +4,7 @@
     "fileLocation": "https://raw.githubusercontent.com/UST-QuAntiL/nisq-analyzer-content/master/example-implementations/Grover-SAT/grover-fix-sat-qiskit.py",
     "selectionRule": "processable(Formula, grover-fix-sat-qiskit) :- Formula = '(A | B) & (A | ~B) & (~A | B)'.",
     "sdk": "Qiskit",
+    "language": "Qiskit",
     "inputParameters": {
         "parameters": [
             {

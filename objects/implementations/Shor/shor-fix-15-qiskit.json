@@ -4,6 +4,7 @@
     "fileLocation": "https://raw.githubusercontent.com/UST-QuAntiL/nisq-analyzer-content/master/example-implementations/Shor/shor-fix-15-qiskit.py",
     "selectionRule": "processable(N, shor-fix-15-qiskit) :- N is 15.",
     "sdk": "Qiskit",
+    "language": "Qiskit",
     "inputParameters": {
         "parameters": [
             {

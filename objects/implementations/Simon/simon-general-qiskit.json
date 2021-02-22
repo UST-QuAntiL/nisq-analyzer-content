@@ -4,6 +4,7 @@
     "fileLocation": "https://raw.githubusercontent.com/UST-QuAntiL/nisq-analyzer-content/master/example-implementations/Simon/simon-general-qiskit.py",
     "selectionRule": "processable(S, simon-general-qiskit) :- S =~ '^[01]+$', atom_length(S, X), X is X /\\ (-X).",
     "sdk": "Qiskit",
+    "language": "Qiskit",
     "inputParameters": {
         "parameters": [
             {

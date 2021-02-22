@@ -4,6 +4,7 @@
     "fileLocation": "https://raw.githubusercontent.com/UST-QuAntiL/nisq-analyzer-content/master/example-implementations/Grover-Truthtable/grover-general-truthtable-qiskit.py",
     "selectionRule": "processable(Oracle, grover-general-truthtable-qiskit) :- Oracle =~ '^[01]+$', atom_length(Oracle, X), X is X /\\ (-X).",
     "sdk": "Qiskit",
+    "language": "Qiskit",
     "inputParameters": {
         "parameters": [
             {

@@ -4,6 +4,7 @@
     "fileLocation": "https://raw.githubusercontent.com/UST-QuAntiL/nisq-analyzer-content/master/example-implementations/Shor/shor-general-qiskit.py",
     "selectionRule": "processable(N, shor-general-qiskit) :- N > 2, 1 is mod(N, 2).",
     "sdk": "Qiskit",
+    "language": "Qiskit",
     "inputParameters": {
         "parameters": [
             {
