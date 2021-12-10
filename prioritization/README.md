@@ -10,7 +10,9 @@ This guidance guides you through the process of compiling a quantum circuit on d
 
 
 ### 1. Add Qiskit Credentials to docker-compose.override.yml
-Insert your Qiskit token at `QPROV_IBMQ_TOKEN: 'your-qiskit-token-here'` in the `docker-compose.override.yml`.
+1. Copy the [_docker-compose.override.yml](./Docker/_docker-compose.override.yml) file in the Docker folder
+to `docker-compose.override.yml`.
+2. Insert your Qiskit token at `QPROV_IBMQ_TOKEN: 'your-qiskit-token-here'` in the `docker-compose.override.yml`.
 
 **Note:** Currently only quantum computers of IBMQ are supported.
 
