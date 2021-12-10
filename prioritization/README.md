@@ -14,7 +14,7 @@ Insert your Qiskit token at `QPROV_IBMQ_TOKEN: 'your-qiskit-token-here'` in the 
 
 **Note:** Currently only quantum computers of IBMQ are supported.
 
-### 2. Run the UI and the all required components
+### 2. Run the UI and all required components
 Open a console, navigate to the folder [Docker](./Docker), and run the following commands:
 
 1. `docker-compose --profile nisqAnalyzerCompilerComparison pull`
@@ -29,13 +29,13 @@ The UI is visible.
 1. In the UI, go to "Execution Environments" > "Software Platforms" and add "Qiskit" as a new SDK (button under "Search").
    ![alt text](./../compiler-selection/pictures/add-SDK.png "Add SDK")
   
-2. Add a new algorithm (button under "Search") by inserting a name and choosing its computation model.
+2. Go to "Algorithms" and add a new algorithm (button under "Search") by inserting a name and choosing its computation model.
    ![alt text](./../compiler-selection/pictures/add-algorithm.png "Add algorithm")
   
-3. Add a new implementation to the algorithm by choosing a name for the circuit you want to compile.
+3. In context of the algorithm, go to the "Implementations" tab > Add a new implementation to the algorithm by choosing a name for the circuit you want to compile.
    ![alt text](./../compiler-selection/pictures/add-implementation.png "Add implementation")
   
-4. In context of the implementation, go to the "Selecion Criteria" tab > insert the URL of the raw circuit, specifiy its SDK and select its language.  
+4. In context of the implementation, go to the "Selecion Criteria" tab > insert the URL of the raw circuit, specifiy its SDK and select its language > save your adaptions.  
    **Note:** Sample circuits can be found under [Sample Circuits](./Sample%20Circuits).
    ![alt text](./../compiler-selection/pictures/implementation-selection-criteria.png "Add selection criteria")
   
@@ -56,7 +56,7 @@ To see all metric values scroll horizontally. It is automatically checked if the
 9. When the prioritization process is finished, the rank and the score of each compiled circuit is presented.
    ![alt text](./pictures/prioritization-ranking.png "prioritization ranking")
 
-### 5. Stop the environment
+### 4. Stop the environment
 
 1. To stop the environment go to the console window with the docker-compose running, stop the process (e.g. control+shift+C for Mac).
 2. To remove all volumes run `docker-compose down -v`.
