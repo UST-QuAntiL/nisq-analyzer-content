@@ -1,0 +1,5 @@
+version: '3.6'
+services:
+  qprov-collector-ibm:
+    environment:
+      QPROV_IBMQ_TOKEN: ''
