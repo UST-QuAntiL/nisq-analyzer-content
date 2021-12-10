@@ -2,16 +2,15 @@
 
 # Dockerized QuAntiL Environment
 
-Docker Compose file for running the entire QuAntiL environment provided by the [QC Atlas UI](https://github.com/UST-QuAntiL/qc-atlas-ui).  
+Docker Compose file for running parts of the QuAntiL environment provided by the [QC Atlas UI](https://github.com/UST-QuAntiL/qc-atlas-ui).  
 Thereby, the [QC Atlas](https://github.com/UST-QuAntiL/qc-atlas) builds the basic knowledge base.  
-Furthermore, different features, e.g. [NISQ Analyzer](https://github.com/UST-QuAntiL/nisq-analyzer), [Pattern Atlas](https://github.com/PatternAtlas/pattern-atlas-api), and [QProv](https://github.com/UST-QuAntiL/qprov), are supported on top of the QC Atlas.  
+Furthermore, different features, e.g. [NISQ Analyzer](https://github.com/UST-QuAntiL/nisq-analyzer) and [QProv](https://github.com/UST-QuAntiL/qprov), are supported on top of the QC Atlas.  
 These features and their related backend components are defined as feature sets.  
 
 The defined feature sets are namely:  
 - `all` (runs all features)
 - `nisqAnalyzer`
 - `nisqAnalyzerCompilerComparison`
-- `patternAtlas`
 - `qprov`
 
 A detailed documentation can be found [here](https://quantil.readthedocs.io/en/latest/).  
@@ -43,8 +42,6 @@ For running all feature sets, choose `--profile all`.
 |:------------------- |:--- |:------ |:---------- |
 | QC-Atlas-UI |<http://localhost:80> | [Link](https://github.com/UST-QuAntiL/qc-atlas-ui) | [Link](https://hub.docker.com/r/planqk/qc-atlas-ui) |
 | QC-Atlas |<http://localhost:6626/atlas> | [Link](https://github.com/UST-QuAntiL/qc-atlas) | [Link](https://hub.docker.com/r/planqk/atlas) |
-| Pattern-Atlas-API |<http://localhost:1977/patternatlas> | [Link](https://github.com/PatternAtlas/pattern-atlas-api) | [Link](https://hub.docker.com/r/patternatlas/pattern-atlas-api) |
-| Pattern-Atlas-UI |<http://localhost:1978> | [Link](https://github.com/PatternAtlas/pattern-atlas-ui) | [Link](https://hub.docker.com/r/patternatlas/pattern-atlas-ui) |
 | NISQ-Analyzer |<http://localhost:5010/nisq-analyzer> | [Link](https://github.com/UST-QuAntiL/nisq-analyzer) | [Link](https://hub.docker.com/r/planqk/nisq-analyzer) |
 | Quantum-Transpiler-Frontend |<http://localhost:5011> | [Link](https://github.com/UST-QuAntiL/QuantumTranspiler) | [Link](https://hub.docker.com/r/planqk/quantum-transpiler-frontend) |
 | Quantum-Transpiler-Backend |<http://localhost:5012> | [Link](https://github.com/UST-QuAntiL/QuantumTranspiler) | [Link](https://hub.docker.com/r/planqk/quantum-transpiler-backend) |
@@ -63,8 +60,6 @@ For running all feature sets, choose `--profile all`.
 **Make sure following ports in your environment are free in order to start the QuAntiL environment properly:**
 
 * `80`
-* `1977`
-* `1978`
 * `2379`
 * `5010`-`5017`
 * `5020`-`5021`
