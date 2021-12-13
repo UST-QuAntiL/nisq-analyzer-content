@@ -5,38 +5,16 @@
 Docker Compose file for running parts of the QuAntiL environment provided by the [QC Atlas UI](https://github.com/UST-QuAntiL/qc-atlas-ui).  
 Thereby, the [QC Atlas](https://github.com/UST-QuAntiL/qc-atlas) builds the basic knowledge base.  
 Furthermore, different features, e.g. [NISQ Analyzer](https://github.com/UST-QuAntiL/nisq-analyzer) and [QProv](https://github.com/UST-QuAntiL/qprov), are supported on top of the QC Atlas.  
-These features and their related backend components are defined as feature sets.  
-
-The defined feature sets are namely:  
-- `all` (runs all features)
-- `nisqAnalyzer`
-- `nisqAnalyzerCompilerComparison`
-- `qprov`
 
 A detailed documentation can be found [here](https://quantil.readthedocs.io/en/latest/).  
 
 The fastest way to get started is using [Docker Compose](https://docs.docker.com/compose/).  
 
-The base components QC Atlas, QC Atlas UI, LaTeX Renderer, and the databases without any of the named features run by default using:
+All components run by using:
   ```shell
   docker-compose pull
   docker-compose up
   ```
-For running certain feature sets on top of the base components, [Profiles](https://docs.docker.com/compose/profiles/) are used.  
-To start a certain feature set run:
-  ```shell
-  docker-compose --profile <name-of-feature-set> pull
-  docker-compose --profile <name-of-feature-set> up
-  ```
-
-For running multiple feature sets, e.g. two sets, run:
-  ```shell
-  docker-compose --profile <name-of-feature-set-1> --profile <name-of-feature-set-2> pull
-  docker-compose --profile <name-of-feature-set-1> --profile <name-of-feature-set-2> up
-  ```
-
-For running all feature sets, choose `--profile all`.
-
 
 | QuAntiL Component | URL | GitHub | Docker Hub |
 |:------------------- |:--- |:------ |:---------- |

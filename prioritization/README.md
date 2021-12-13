@@ -23,9 +23,9 @@ to `docker-compose.override.yml`.
 ### 2. Run the UI and all required components
 Open a console, navigate to the folder [Docker](./Docker), and run the following commands:
 
-1. `docker-compose --profile nisqAnalyzerCompilerComparison pull`
+1. `docker-compose pull`
 2. `docker-compose build db`
-3. `docker-compose --profile nisqAnalyzerCompilerComparison up`
+3. `docker-compose up`
 
 After a few seconds, the ecosystem is up and running, and you can access it via the browser on <http://localhost:80>.
 The UI is visible.
