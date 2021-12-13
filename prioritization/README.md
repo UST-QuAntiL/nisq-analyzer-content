@@ -1,6 +1,9 @@
 # Prioritization of Compiled Quantum Circuits
 
 This guidance guides you through the process of compiling a quantum circuit on different quantum computers with several quantum compilers.  
+  
+All data of the case study are contained in [rankings-of-compiled-circuits.xml](./rankings-of-compiled-circuits.xlsx).
+
 A demo video can be viewed [here](https://vimeo.com/656085309).
 
 ### Prerequisites
