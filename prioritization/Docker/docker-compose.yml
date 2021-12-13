@@ -24,7 +24,7 @@ services:
     networks:
       - default
   qc-atlas-ui:
-    image: planqk/qc-atlas-ui:latest
+    image: planqk/qc-atlas-ui:paper-prioritization
     depends_on:
       - config-server
     environment:
