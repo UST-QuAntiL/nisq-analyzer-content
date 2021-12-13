@@ -59,7 +59,6 @@ services:
       - default
   nisq-analyzer:
     image: planqk/nisq-analyzer:paper-prioritization
-    profiles: ["all", "nisqAnalyzer", "nisqAnalyzerCompilerComparison"]
     environment:
       POSTGRES_HOSTNAME: db
       POSTGRES_PORT: 5060
@@ -95,7 +94,6 @@ services:
 
   quantum-transpiler:
     image: planqk/quantum-transpiler-backend:paper-prioritization
-    profiles: ["all", "nisqAnalyzerCompilerComparison"]
     ports:
      - '5012:5012'
     networks:
@@ -103,7 +101,6 @@ services:
 
   quantum-transpiler-frontend:
     image: planqk/quantum-transpiler-frontend:paper-prioritization
-    profiles: ["all", "nisqAnalyzerCompilerComparison"]
     ports:
      - '5011:80'
     networks:
@@ -112,7 +109,6 @@ services:
   # used by nisq analyzer for execution and transpilation
   qiskit-service:
     image: planqk/qiskit-service:paper-prioritization
-    profiles: ["all", "nisqAnalyzer", "nisqAnalyzerCompilerComparison", "qprov"]
     command: sh /app/startup.sh
     ports:
       - "5013:5013"
@@ -126,7 +122,6 @@ services:
 
   qiskit-rq-worker:
     image: planqk/qiskit-service:paper-prioritization
-    profiles: ["all", "nisqAnalyzer", "nisqAnalyzerCompilerComparison", "qprov"]
     command: rq worker --url redis://redis:5040 qiskit-service_execute
     environment:
       - REDIS_URL=redis://redis:5040
@@ -140,7 +135,6 @@ services:
 
   forest-service:
     image: planqk/forest-service:paper-prioritization
-    profiles: ["all", "nisqAnalyzerCompilerComparison"]
     command: sh /app/startup.sh
     ports:
       - "5014:5014"
@@ -158,7 +152,6 @@ services:
 
   forest-rq-worker:
     image: planqk/forest-service:paper-prioritization
-    profiles: ["all", "nisqAnalyzerCompilerComparison"]
     command: rq worker --url redis://redis:5040 forest-service_execute
     environment:
       - REDIS_URL=redis://redis:5040
@@ -176,7 +169,6 @@ services:
 
   pytket-service:
     image: planqk/pytket-service:paper-prioritization
-    profiles: ["all", "nisqAnalyzerCompilerComparison"]
     command: sh /app/startup.sh
     ports:
       - "5015:5015"
@@ -192,7 +184,6 @@ services:
 
   pytket-rq-worker:
     image: planqk/pytket-service:paper-prioritization
-    profiles: ["all", "nisqAnalyzerCompilerComparison"]
     command: rq worker --url redis://redis:5040 pytket-service_execute
     environment:
       - REDIS_URL=redis://redis:5040
@@ -208,7 +199,6 @@ services:
 
   rigetti-qvm:
     image: rigetti/qvm
-    profiles: ["all", "nisqAnalyzerCompilerComparison"]
     ports:
       - "5016:5016"
     command: -S -p 5016
@@ -217,7 +207,6 @@ services:
 
   rigetti-quilc:
     image: rigetti/quilc
-    profiles: ["all", "nisqAnalyzerCompilerComparison"]
     ports:
       - "5017:5017"
     command: -S -p 5017
@@ -226,7 +215,6 @@ services:
   # redis server for qiskit service
   redis:
     image: redis:6.2.2
-    profiles: ["all", "nisqAnalyzer", "nisqAnalyzerCompilerComparison", "qprov"]
     ports:
       - "5040:5040"
     command: --port 5040
@@ -234,7 +222,6 @@ services:
       - default
   qprov:
     image: planqk/qprov:paper-prioritization
-    profiles: ["all", "nisqAnalyzer", "nisqAnalyzerCompilerComparison", "qprov"]
     environment:
       POSTGRES_HOSTNAME: db
       POSTGRES_PORT: 5060
@@ -247,7 +234,6 @@ services:
       - default
   qprov-collector-ibm:
     image: planqk/qprov-collector:paper-prioritization
-    profiles: ["all", "nisqAnalyzer", "nisqAnalyzerCompilerComparison", "qprov"]
     environment:
       POSTGRES_HOSTNAME: db
       POSTGRES_PORT: 5060
