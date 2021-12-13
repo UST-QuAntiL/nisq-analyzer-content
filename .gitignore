@@ -1,1 +1,4 @@
 .DS_Store
+.idea/
+ssh_secret
+prioritization/Docker/docker-compose.override.yml
