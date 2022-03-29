@@ -16,7 +16,7 @@ All components run by using:
   docker-compose up
   ```
 
-| QuAntiL Component | URL | GitHub | Docker Hub |
+| QuAntiL Component | URL | GitHub | Docker Hub/GitHub Registry |
 |:------------------- |:--- |:------ |:---------- |
 | QC-Atlas-UI |<http://localhost:80> | [Link](https://github.com/UST-QuAntiL/qc-atlas-ui) | [Link](https://hub.docker.com/r/planqk/qc-atlas-ui) |
 | QC-Atlas |<http://localhost:6626/atlas> | [Link](https://github.com/UST-QuAntiL/qc-atlas) | [Link](https://hub.docker.com/r/planqk/atlas) |
@@ -34,17 +34,21 @@ All components run by using:
 | Redis |<http://localhost:5040> | [Link](https://github.com/redis/redis) | [Link](https://hub.docker.com/_/redis) |
 | Postgres-Multi DB | <tcp://localhost:5060> | [Link](https://github.com/lmm-git/docker-postgres-multi) | [Link](https://hub.docker.com/r/lmmdock/postgres-multi) |
 | Config-Server |<http://localhost:2379> | [Link](https://github.com/etcd-io/etcd) | [Link](https://quay.io/repository/coreos/etcd) |
+| QHAna Backend |<http://localhost:9090> | [Link]https://github.com/UST-QuAntiL/qhana-backend | [Link](https://github.com/UST-QuAntiL/qhana-backend/pkgs/container/qhana-backend) |
+| QHAna Plugin Runner |<http://localhost:5005> | [Link](https://github.com/UST-QuAntiL/qhana-plugin-runner) | [Link](https://github.com/UST-QuAntiL/qhana-plugin-runner/pkgs/container/qhana-plugin-runner) |
 
 **Make sure following ports in your environment are free in order to start the QuAntiL environment properly:**
 
 * `80`
 * `2379`
+* `5005`
 * `5010`-`5017`
 * `5020`-`5021`
 * `5030`
 * `5040`
 * `5060`
 * `6626`
+* `9090`
 
 ### Tips and Tricks
 
