@@ -3,7 +3,7 @@
 Content repository with sample data for the [NISQ Analyzer](https://github.com/UST-QuAntiL/nisq-analyzer/) its implementation & QPU selection, compiler-selection, and prioritization.
 
 + [benchmarking](/benchmarking) offers differnt generated Cliffor gate circuits as well as a script to generate further Clifford gate circuits.
-+ [prioritization-based-on-learned-weights](/prioritization-based-on-learned-weights) contains the docker-compose, sample data, and results for the learning weights for prioritization feature of the NISQ Analyzer.
++ [prioritization-based-on-learned-weights](/prioritization-based-on-learned-weights) contains the docker-compose, sample data, and results to learn weights for the prioritization feature of the NISQ Analyzer.
 + [prioritization](/prioritization) contains the docker-compose and sample circuits for the prioritization feature of the NISQ Analyzer.
 + [compiler-selection](/compiler-selection) contains the docker-compose and sample circuits for the compiler-selection feature of the NISQ Analyzer.
 + [example-implementations](/example-implementations) contains sample implementations of certain quantum algorithms which can be used by the [qiskit-service](https://github.com/UST-QuAntiL/qiskit-service/).  
