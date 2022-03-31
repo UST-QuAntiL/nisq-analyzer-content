@@ -27,7 +27,7 @@ services:
     networks:
       - default
   qc-atlas-ui:
-    image: planqk/qc-atlas-ui:latest
+    image: planqk/qc-atlas-ui:paper-optimizing-prioritization
     depends_on:
       - config-server
     environment:
@@ -49,7 +49,7 @@ services:
     networks:
       - default
   qc-atlas:
-    image: planqk/atlas:latest
+    image: planqk/atlas:paper-optimizing-prioritization
     environment:
       POSTGRES_HOSTNAME: db
       POSTGRES_PORT: 5060
@@ -65,7 +65,7 @@ services:
     networks:
       - default
   nisq-analyzer:
-    image: planqk/nisq-analyzer:latest
+    image: planqk/nisq-analyzer:paper-optimizing-prioritization
     environment:
       POSTGRES_HOSTNAME: db
       POSTGRES_PORT: 5060
@@ -92,26 +92,26 @@ services:
 
       # Configure Prioritization Service connection
       PRIORITIZATION_HOSTNAME: qhana-plugin-runner
-      PRIORITIZATION_PORT: 5005
+      PRIORITIZATION_PORT: 8080
     ports:
       - '5010:5010'
     networks:
       - default
   # used by qc-atlas-ui to render latex
   latex-renderer:
-    image: planqk/latex-renderer:latest
+    image: planqk/latex-renderer:paper-optimizing-prioritization
     ports:
       - "5030:5030"
 
   quantum-transpiler:
-    image: planqk/quantum-transpiler-backend:latest
+    image: planqk/quantum-transpiler-backend:paper-optimizing-prioritization
     ports:
      - '5012:5012'
     networks:
      - default
 
   quantum-transpiler-frontend:
-    image: planqk/quantum-transpiler-frontend:latest
+    image: planqk/quantum-transpiler-frontend:paper-optimizing-prioritization
     ports:
      - '5011:80'
     networks:
@@ -119,7 +119,7 @@ services:
 
   # used by nisq analyzer for execution and transpilation
   qiskit-service:
-    image: planqk/qiskit-service:latest
+    image: planqk/qiskit-service:paper-optimizing-prioritization
     command: sh /app/startup.sh
     ports:
       - "5013:5013"
@@ -132,7 +132,7 @@ services:
       - default
 
   qiskit-rq-worker:
-    image: planqk/qiskit-service:latest
+    image: planqk/qiskit-service:paper-optimizing-prioritization
     command: rq worker --url redis://redis:5040 qiskit-service_execute
     environment:
       - REDIS_URL=redis://redis:5040
@@ -142,10 +142,10 @@ services:
     depends_on:
       - redis
     deploy:
-      replicas: 2
+      replicas: 1
 
   forest-service:
-    image: planqk/forest-service:latest
+    image: planqk/forest-service:paper-optimizing-prioritization
     command: sh /app/startup.sh
     ports:
       - "5014:5014"
@@ -162,7 +162,7 @@ services:
       - default
 
   forest-rq-worker:
-    image: planqk/forest-service:latest
+    image: planqk/forest-service:paper-optimizing-prioritization
     command: rq worker --url redis://redis:5040 forest-service_execute
     environment:
       - REDIS_URL=redis://redis:5040
@@ -179,7 +179,7 @@ services:
       - default
 
   pytket-service:
-    image: planqk/pytket-service:latest
+    image: planqk/pytket-service:paper-optimizing-prioritization
     command: sh /app/startup.sh
     ports:
       - "5015:5015"
@@ -194,7 +194,7 @@ services:
       - default
 
   pytket-rq-worker:
-    image: planqk/pytket-service:latest
+    image: planqk/pytket-service:paper-optimizing-prioritization
     command: rq worker --url redis://redis:5040 pytket-service_execute
     environment:
       - REDIS_URL=redis://redis:5040
@@ -208,7 +208,7 @@ services:
     networks:
       - default
     deploy:
-      replicas: 2
+      replicas: 1
 
   rigetti-qvm:
     image: rigetti/qvm
@@ -234,7 +234,7 @@ services:
     networks:
       - default
   qprov:
-    image: planqk/qprov:latest
+    image: planqk/qprov:paper-optimizing-prioritization
     environment:
       POSTGRES_HOSTNAME: db
       POSTGRES_PORT: 5060
@@ -246,7 +246,7 @@ services:
     networks:
       - default
   qprov-collector-ibm:
-    image: planqk/qprov-collector:latest
+    image: planqk/qprov-collector:paper-optimizing-prioritization
     environment:
       POSTGRES_HOSTNAME: db
       POSTGRES_PORT: 5060
@@ -280,7 +280,7 @@ services:
   # Prio Service Containers
   qhana-plugin-runner:
     platform: linux/amd64
-    image: ghcr.io/ust-quantil/qhana-plugin-runner:main
+    image: ghcr.io/ust-quantil/qhana-plugin-runner:paper-optimizing-prioritization
     depends_on:
       - redis
       - db
@@ -293,10 +293,12 @@ services:
       BROKER_URL: redis://redis:5040
       RESULT_BACKEND: redis://redis:5040
       SQLALCHEMY_DATABASE_URI: "postgresql+psycopg2://qhana:qhana@db:5060/qhana"
-      GIT_PLUGINS: "git+https://github.com/UST-QuAntiL/nisq-analyzer-prio-service.git@master#subdirectory=/plugins"
+      GIT_PLUGINS: "git+https://github.com/UST-QuAntiL/nisq-analyzer-prio-service.git@paper/optimizing-prioritization#subdirectory=/plugins"
+    networks:
+      - default
   qhana-worker:
     platform: linux/amd64
-    image: ghcr.io/ust-quantil/qhana-plugin-runner:main
+    image: ghcr.io/ust-quantil/qhana-plugin-runner:paper-optimizing-prioritization
     depends_on:
       - qhana-plugin-runner
     volumes:
@@ -307,13 +309,17 @@ services:
       BROKER_URL: redis://redis:5040
       RESULT_BACKEND: redis://redis:5040
       SQLALCHEMY_DATABASE_URI: "postgresql+psycopg2://qhana:qhana@db:5060/qhana"
-      GIT_PLUGINS: "git+https://github.com/UST-QuAntiL/nisq-analyzer-prio-service.git@master#subdirectory=/plugins"
+      GIT_PLUGINS: "git+https://github.com/UST-QuAntiL/nisq-analyzer-prio-service.git@paper/optimizing-prioritization#subdirectory=/plugins"
+    networks:
+      - default
   qhana-backend:
-    image: ghcr.io/ust-quantil/qhana-backend:main
+    image: ghcr.io/ust-quantil/qhana-backend:paper-optimizing-prioritization
     volumes:
       - experiments:/app/data
     ports:
       - 9090:9090
+    networks:
+      - default
 
 networks:
   default:
