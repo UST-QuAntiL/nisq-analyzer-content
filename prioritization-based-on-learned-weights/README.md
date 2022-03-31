@@ -47,7 +47,7 @@ The analysis is complete when the "Show analysis" button occurs.
    ![alt text](./pictures/start-analysis.png "analysis jobs")
    ![alt text](./pictures/qpu-analysis-finished.png "analysis jobs")
   
-6. Click on the "Show analysis" button to see suitable compiled circuits and their metric values for different quantum computers of several quantum compilers. 
+6. Clicked on the "Show analysis" button, you can see suitable compiled circuits and their metric values for different quantum computers of several quantum compilers. 
 To see all metric values scroll horizontally. It is automatically checked if the quantum computer metrics used for compilation are still up-to-date.
    ![alt text](./pictures/analysis-results-list.png "analysis metrics")
   
@@ -61,7 +61,7 @@ When defining own weights, you can select the MCDA method to be applied and adap
 When selecting predefined preferences you can choose the MCDA method, and in case of stable execution results, also the weighting method.
    ![alt text](./pictures/weighting-mcda-method.png "predefined weights settings")
 
-8.1 If a ranking based on stable execution results is desired, a "learning weights" processing dialog appears. When weights are learned by the selected weighting method, the list of weights appears, and they can be adjusted. By clicking "Ok" the prioritization with the weights is started.
+8.1 If a ranking based on stable execution results is desired, a "learning weights" processing dialog appears. When weights are learned by the selected weighting method, the list of weights appears, and they can be adjusted. By clicking "Ok", the prioritization with the weights is started.
    ![alt text](./pictures/learned-weights.png "learned weights")
 
 9. When the prioritization process is finished, the rank and the score of each compiled circuit is presented.
@@ -73,7 +73,7 @@ When selecting predefined preferences you can choose the MCDA method, and in cas
 11. As soon as the analysis result is returned, a "Sensitivity Analysis Result" button appears.
     ![alt text](./pictures/sensitivity-analysis-result.png "sensitivity analysis result button")
 
-12. By clicking on this button, a new window opens, showing a plot visualizing the analysis result.
+12. By clicking on this button, a new window opens, showing a plot that visualizes the analysis result.
     ![alt text](./pictures/sensitivity-analysis-plot.png "sensitivity analysis plot")
 
 ### 4. Stop the environment
