@@ -9,5 +9,5 @@ def get_circuit(**kwargs):
     oracle = PhaseOracle(oracle_string)
     problem = AmplificationProblem(oracle, is_good_state=oracle.evaluate_bitstring)
     grover = Grover()
-    grover_circuit = grover.construct_circuit(problem=problem, measurement=True)
+    grover_circuit = grover.construct_circuit(problem=problem, power=1, measurement=True)
     return grover_circuit
