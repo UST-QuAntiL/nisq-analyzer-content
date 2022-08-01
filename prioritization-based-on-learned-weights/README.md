@@ -1,6 +1,6 @@
 # Prioritization of Compiled Quantum Circuits based on Previous Execution Results
 
-This guidance guides you through the process of compiling a quantum circuit on different quantum computers with several quantum compilers.  
+This guidance guides you through the process of compiling a quantum circuit on different quantum computers with several quantum compilers using the [NISQ Analyzer](https://github.com/UST-QuAntiL/nisq-analyzer/) and [additional components](https://github.com/UST-QuAntiL/nisq-analyzer-content/blob/master/prioritization-based-on-learned-weights/Docker/README.md).  
   
 All data of the case study are contained in [sample-data](./sample-data).
 
