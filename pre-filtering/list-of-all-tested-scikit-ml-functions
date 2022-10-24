@@ -1,0 +1,53 @@
+# linear:
+LinearRegression(),
+Ridge(),
+Lasso(),
+ElasticNet(),
+Lars(normalize=False),
+LassoLars(normalize=False),
+OrthogonalMatchingPursuit(normalize=False),
+BayesianRidge(),
+ARDRegression(),
+TweedieRegressor(),
+SGDRegressor(),
+PassiveAggressiveRegressor(),
+RANSACRegressor(),
+TheilSenRegressor(),
+HuberRegressor(),
+# QuantileRegressor(),  # take more than 8 hours
+
+# kernel ridge:
+KernelRidge(),
+
+# SVR:
+SVR(max_iter=1000),
+NuSVR(),
+LinearSVR(max_iter=100000),
+
+# nearest neighbors:
+KNeighborsRegressor(),
+# RadiusNeighborsRegressor(),  # ERROR
+
+# gaussian processes:
+# GaussianProcessRegressor(),  # ERROR
+
+# cross decomposition:
+# PLSCanonical(),  # ERROR
+# PLSSVD(),  # ERROR
+# PLSRegression(),  # ERROR
+# CCA(),  # ERROR
+
+# decision trees:
+DecisionTreeRegressor(),
+RandomForestRegressor(),
+
+# ensembles:
+ExtraTreesRegressor(),
+GradientBoostingRegressor(),
+HistGradientBoostingRegressor(),
+
+# isotonic regression:
+# IsotonicRegression(increasing="auto"),  # ERROR
+
+# neural networks:
+MLPRegressor()
