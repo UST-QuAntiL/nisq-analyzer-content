@@ -1,0 +1,9 @@
+avg_single_qubit_gate_error;avg_multi_qubit_gate_error;avg_single_qubit_gate_time;avg_multi_qubit_gate_time;avg_readout_error;t1;t2;qpu;original_width;original_depth;original_multi_qubit_gate_depth;original_total_number_of_operations;original_number_of_single_qubit_gates;original_number_of_multi_qubit_gates;original_number_of_measurement_operations;circuit_name;compiler;histogram_intersection;predicted_histogram_intersection;queue_size;prediction_rank;queue_rank;borda_rank
+0.000254337;0.012949518;26666666;5457778;0.0274;111939.77;98319.54;ibmq_belem;3;14;6;21;13;6;2;Grover SAT Qiskit;pytket;0.760375977;0.78111084;11;0;1;0
+0.000196667;0.008907793;26666666;27733334;0.02598;140240.8;122578.13;ibmq_quito;3;14;6;21;13;6;2;Grover SAT Qiskit;pytket;0.826416016;0.779829102;29;1;4;1
+0.000360316;0.013195274;26666666;38755554;0.0415;80360.09;99525.98;ibmq_lima;3;14;6;21;13;6;2;Grover SAT Qiskit;pytket;0.744628906;0.768310547;18;3;2;2
+0.000254337;0.012949518;26666666;5457778;0.0274;111939.77;98319.54;ibmq_belem;3;14;6;21;13;6;2;Grover SAT Qiskit;qiskit;0.74230957;0.659814453;11;4;0;3
+0.000184556;0.008349201;26666666;39822223;0.03982;94376.96;135534.03;ibmq_bogota;3;14;6;21;13;6;2;Grover SAT Qiskit;pytket;0.704956055;0.772341309;281;2;6;4
+0.000196667;0.008907793;26666666;27733334;0.02598;140240.8;122578.13;ibmq_quito;3;14;6;21;13;6;2;Grover SAT Qiskit;qiskit;0.766357422;0.620329589;29;5;5;5
+0.000360316;0.013195274;26666666;38755554;0.0415;80360.09;99525.98;ibmq_lima;3;14;6;21;13;6;2;Grover SAT Qiskit;qiskit;0.599243164;0.603271484;18;7;3;6
+0.000184556;0.008349201;26666666;39822223;0.03982;94376.96;135534.03;ibmq_bogota;3;14;6;21;13;6;2;Grover SAT Qiskit;qiskit;0.770385742;0.610533447;281;6;7;7
