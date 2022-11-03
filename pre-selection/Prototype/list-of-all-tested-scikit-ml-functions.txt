@@ -26,16 +26,16 @@ LinearSVR(max_iter=100000),
 
 # nearest neighbors:
 KNeighborsRegressor(),
-# RadiusNeighborsRegressor(),  # ERROR
+# RadiusNeighborsRegressor(),  # ERROR - cannot process defined data set
 
 # gaussian processes:
-# GaussianProcessRegressor(),  # ERROR
+# GaussianProcessRegressor(),  # ERROR - cannot process defined data set
 
 # cross decomposition:
-# PLSCanonical(),  # ERROR
-# PLSSVD(),  # ERROR
-# PLSRegression(),  # ERROR
-# CCA(),  # ERROR
+# PLSCanonical(),  # ERROR - cannot process defined data set
+# PLSSVD(),  # ERROR - cannot process defined data set
+# PLSRegression(),  # ERROR - cannot process defined data set
+# CCA(),  # ERROR - cannot process defined data set
 
 # decision trees:
 DecisionTreeRegressor(),
@@ -47,7 +47,7 @@ GradientBoostingRegressor(),
 HistGradientBoostingRegressor(),
 
 # isotonic regression:
-# IsotonicRegression(increasing="auto"),  # ERROR
+# IsotonicRegression(increasing="auto"),  # ERROR - cannot process defined data set
 
 # neural networks:
 MLPRegressor()
