@@ -2,7 +2,7 @@
 
 This guidance guides you through the process of compiling a quantum circuit on different quantum computers with several quantum compilers using the [NISQ Analyzer](https://github.com/UST-QuAntiL/nisq-analyzer/) and [additional components](https://github.com/UST-QuAntiL/nisq-analyzer-content/blob/master/pre-selection/Docker/README.md).  
 
-All data of the case study are contained in [sample-data](./Case%20Study).
+All data of the case study are contained in [sample-data](./Case-Study).
 
 ### Prerequisites
 + Docker Engine - [Install Guide](https://docs.docker.com/engine/install/)
