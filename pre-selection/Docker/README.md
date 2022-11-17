@@ -30,11 +30,9 @@ All components run by using:
 | Rigetti Quilc |<http://localhost:5017> | [Link](https://github.com/rigetti/quilc) | [Link](https://hub.docker.com/r/rigetti/quilc) |
 | QProv |<http://localhost:5020/qprov> | [Link](https://github.com/UST-QuAntiL/qprov) | [Link](https://hub.docker.com/r/planqk/qprov) |
 | QProv-Collector-IBM |<http://localhost:5021> | [Link](https://github.com/UST-QuAntiL/qprov) | [Link](https://hub.docker.com/r/planqk/qprov-collector) |
-| Latex-Renderer |<http://localhost:5030> | [Link](https://github.com/UST-QuAntiL/latex-renderer) | [Link](https://hub.docker.com/repository/docker/planqk/latex-renderer) |
 | Redis |<http://localhost:5040> | [Link](https://github.com/redis/redis) | [Link](https://hub.docker.com/_/redis) |
 | Postgres-Multi DB | <tcp://localhost:5060> | [Link](https://github.com/lmm-git/docker-postgres-multi) | [Link](https://hub.docker.com/r/lmmdock/postgres-multi) |
 | Config-Server |<http://localhost:2379> | [Link](https://github.com/etcd-io/etcd) | [Link](https://quay.io/repository/coreos/etcd) |
-| QHAna Backend |<http://localhost:9090> | [Link](https://github.com/UST-QuAntiL/qhana-backend) | [Link](https://github.com/UST-QuAntiL/qhana-backend/pkgs/container/qhana-backend) |
 | QHAna Plugin Runner |<http://localhost:5005> | [Link](https://github.com/UST-QuAntiL/qhana-plugin-runner) | [Link](https://github.com/UST-QuAntiL/qhana-plugin-runner/pkgs/container/qhana-plugin-runner) |
 
 **Make sure following ports in your environment are free in order to start the QuAntiL environment properly:**
@@ -44,11 +42,9 @@ All components run by using:
 * `5005`
 * `5010`-`5017`
 * `5020`-`5021`
-* `5030`
 * `5040`
 * `5060`
 * `6626`
-* `9090`
 
 ### Tips and Tricks
 
