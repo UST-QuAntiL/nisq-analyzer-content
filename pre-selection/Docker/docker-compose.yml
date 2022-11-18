@@ -104,10 +104,10 @@ services:
     networks:
       - default
   # used by qc-atlas-ui to render latex
-  # latex-renderer:
-  #   image: planqk/latex-renderer:latest
-  #   ports:
-  #     - "5030:5030"
+  latex-renderer:
+    image: planqk/latex-renderer:latest
+    ports:
+      - "5030:5030"
 
   quantum-transpiler:
     image: planqk/quantum-transpiler-backend:latest
@@ -125,7 +125,7 @@ services:
 
   # used by nisq analyzer for execution and transpilation
   qiskit-service:
-    image: planqk/qiskit-service:local
+    image: planqk/qiskit-service:latest
     command: sh /app/startup.sh
     ports:
       - "5013:5013"
@@ -150,39 +150,39 @@ services:
     deploy:
       replicas: 2
 
-  # forest-service:
-  #   image: planqk/forest-service:latest
-  #   command: sh /app/startup.sh
-  #   ports:
-  #     - "5014:5014"
-  #   environment:
-  #     - REDIS_URL=redis://redis:5040
-  #     - DATABASE_URL=sqlite:////data/app.db
-  #     - QVM_HOSTNAME=rigetti-qvm
-  #     - QVM_PORT=5016
-  #     - QUILC_HOSTNAME=rigetti-quilc
-  #     - QUILC_PORT=5017
-  #   volumes:
-  #     - exec_data:/data
-  #   networks:
-  #     - default
-  #
-  # forest-rq-worker:
-  #   image: planqk/forest-service:latest
-  #   command: rq worker --url redis://redis:5040 forest-service_execute
-  #   environment:
-  #     - REDIS_URL=redis://redis:5040
-  #     - DATABASE_URL=sqlite:////data/app.db
-  #     - QVM_HOSTNAME=rigetti-qvm
-  #     - QVM_PORT=5016
-  #     - QUILC_HOSTNAME=rigetti-quilc
-  #     - QUILC_PORT=5017
-  #   volumes:
-  #     - exec_data:/data
-  #   depends_on:
-  #     - redis
-  #   networks:
-  #     - default
+  forest-service:
+    image: planqk/forest-service:latest
+    command: sh /app/startup.sh
+    ports:
+      - "5014:5014"
+    environment:
+      - REDIS_URL=redis://redis:5040
+      - DATABASE_URL=sqlite:////data/app.db
+      - QVM_HOSTNAME=rigetti-qvm
+      - QVM_PORT=5016
+      - QUILC_HOSTNAME=rigetti-quilc
+      - QUILC_PORT=5017
+    volumes:
+      - exec_data:/data
+    networks:
+      - default
+
+  forest-rq-worker:
+    image: planqk/forest-service:latest
+    command: rq worker --url redis://redis:5040 forest-service_execute
+    environment:
+      - REDIS_URL=redis://redis:5040
+      - DATABASE_URL=sqlite:////data/app.db
+      - QVM_HOSTNAME=rigetti-qvm
+      - QVM_PORT=5016
+      - QUILC_HOSTNAME=rigetti-quilc
+      - QUILC_PORT=5017
+    volumes:
+      - exec_data:/data
+    depends_on:
+      - redis
+    networks:
+      - default
 
   pytket-service:
     image: planqk/pytket-service:latest
@@ -216,21 +216,21 @@ services:
     deploy:
       replicas: 1
 
-  # rigetti-qvm:
-  #   image: rigetti/qvm
-  #   ports:
-  #     - "5016:5016"
-  #   command: -S -p 5016
-  #   networks:
-  #     - default
-  #
-  # rigetti-quilc:
-  #   image: rigetti/quilc
-  #   ports:
-  #     - "5017:5017"
-  #   command: -S -p 5017
-  #   networks:
-  #     - default
+  rigetti-qvm:
+    image: rigetti/qvm
+    ports:
+      - "5016:5016"
+    command: -S -p 5016
+    networks:
+      - default
+
+  rigetti-quilc:
+    image: rigetti/quilc
+    ports:
+      - "5017:5017"
+    command: -S -p 5017
+    networks:
+      - default
   # redis server for qiskit service
   redis:
     image: redis:6.2.2
@@ -262,7 +262,7 @@ services:
       QPROV_IBMQ_TOKEN: ''
       QPROV_IBMQ_EXECUTE_CIRCUITS: 'false'
       QPROV_IBMQ_AUTO_COLLECT: 'true'
-      QPROV_IBMQ_AUTO_COLLECT_INTERVAL: 10
+      QPROV_IBMQ_AUTO_COLLECT_INTERVAL: 50
       QPROV_IBMQ_AUTO_COLLECT_INTERVAL_CIRCUITS: 180
       QISKIT_SERVICE_HOSTNAME: qiskit-service
       QISKIT_SERVICE_PORT: 5013
@@ -286,7 +286,7 @@ services:
   # Prio Service Containers
   qhana-plugin-runner:
     platform: linux/amd64
-    image: ghcr.io/ust-quantil/qhana-plugin-runner:paper-optimizing-prioritization
+    image: ghcr.io/ust-quantil/qhana-plugin-runner:main
     depends_on:
       - redis
       - db
@@ -299,12 +299,12 @@ services:
       BROKER_URL: redis://redis:5040
       RESULT_BACKEND: redis://redis:5040
       SQLALCHEMY_DATABASE_URI: "postgresql+psycopg2://qhana:qhana@db:5060/qhana"
-      GIT_PLUGINS: "git+https://github.com/UST-QuAntiL/nisq-analyzer-prio-service.git@master#subdirectory=/plugins"
+      GIT_PLUGINS: "git+https://github.com/UST-QuAntiL/nisq-analyzer-prio-service.git@feature/pre-filtering#subdirectory=/plugins"
     networks:
       - default
   qhana-worker:
     platform: linux/amd64
-    image: ghcr.io/ust-quantil/qhana-plugin-runner:paper-optimizing-prioritization
+    image: ghcr.io/ust-quantil/qhana-plugin-runner:main
     depends_on:
       - qhana-plugin-runner
     volumes:
@@ -315,7 +315,7 @@ services:
       BROKER_URL: redis://redis:5040
       RESULT_BACKEND: redis://redis:5040
       SQLALCHEMY_DATABASE_URI: "postgresql+psycopg2://qhana:qhana@db:5060/qhana"
-      GIT_PLUGINS: "git+https://github.com/UST-QuAntiL/nisq-analyzer-prio-service.git@master#subdirectory=/plugins"
+      GIT_PLUGINS: "git+https://github.com/UST-QuAntiL/nisq-analyzer-prio-service.git@feature/pre-filtering#subdirectory=/plugins"
     networks:
       - default
 
