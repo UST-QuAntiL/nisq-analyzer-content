@@ -94,15 +94,6 @@ services:
     networks:
       - default
 
-  nisq-analyzer-ui:
-    image: planqk/nisq-analyzer-ui:latest
-    environment:
-      NISQ_ANALYZER_HOST_NAME: localhost
-      NISQ_ANALYZER_PORT: 5010
-    ports:
-      - '5009:80'
-    networks:
-      - default
   # used by qc-atlas-ui to render latex
   latex-renderer:
     image: planqk/latex-renderer:latest
