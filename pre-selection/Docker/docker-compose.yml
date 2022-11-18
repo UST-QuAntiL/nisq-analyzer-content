@@ -76,8 +76,12 @@ services:
       # activate correct application properties
       SPRING_PROFILES_ACTIVE: docker
 
+      # Configure QPROV connection
+      QPROV_HOSTNAME: qprov
+      QPROV_PORT: 5020
       TRANSLATOR_HOSTNAME: quantum-transpiler
       TRANSLATOR_PORT: 5012
+
       # Configuration of the SDK Connector Services
       QISKIT_HOSTNAME: qiskit-service
       QISKIT_PORT: 5013
