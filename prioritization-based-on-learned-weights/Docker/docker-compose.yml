@@ -11,6 +11,7 @@ services:
       context: ../
       dockerfile: Docker/db/Dockerfile
     image: quantil-db
+    pull_policy: never
     environment:
       # specifies user:pw for each container
       POSTGRES_USERS: 'planqk:planqk|nisq:nisq|qprov:qprov|qhana:qhana'
@@ -279,8 +280,7 @@ services:
 
   # Prio Service Containers
   qhana-plugin-runner:
-    platform: linux/amd64
-    image: ghcr.io/ust-quantil/qhana-plugin-runner:paper-optimizing-prioritization
+    image: ghcr.io/ust-quantil/qhana-plugin-runner:main
     depends_on:
       - redis
       - db
@@ -293,12 +293,11 @@ services:
       BROKER_URL: redis://redis:5040
       RESULT_BACKEND: redis://redis:5040
       SQLALCHEMY_DATABASE_URI: "postgresql+psycopg2://qhana:qhana@db:5060/qhana"
-      GIT_PLUGINS: "git+https://github.com/UST-QuAntiL/nisq-analyzer-prio-service.git@paper/optimizing-prioritization#subdirectory=/plugins"
+      GIT_PLUGINS: "git+https://github.com/UST-QuAntiL/nisq-analyzer-prio-service.git@feature/pre-filtering#subdirectory=/plugins"
     networks:
       - default
   qhana-worker:
-    platform: linux/amd64
-    image: ghcr.io/ust-quantil/qhana-plugin-runner:paper-optimizing-prioritization
+    image: ghcr.io/ust-quantil/qhana-plugin-runner:main
     depends_on:
       - qhana-plugin-runner
     volumes:
@@ -309,7 +308,7 @@ services:
       BROKER_URL: redis://redis:5040
       RESULT_BACKEND: redis://redis:5040
       SQLALCHEMY_DATABASE_URI: "postgresql+psycopg2://qhana:qhana@db:5060/qhana"
-      GIT_PLUGINS: "git+https://github.com/UST-QuAntiL/nisq-analyzer-prio-service.git@paper/optimizing-prioritization#subdirectory=/plugins"
+      GIT_PLUGINS: "git+https://github.com/UST-QuAntiL/nisq-analyzer-prio-service.git@feature/pre-filtering#subdirectory=/plugins"
     networks:
       - default
   qhana-backend:
