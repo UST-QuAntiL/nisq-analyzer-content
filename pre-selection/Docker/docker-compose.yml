@@ -98,11 +98,6 @@ services:
     networks:
       - default
 
-  # used by qc-atlas-ui to render latex
-  latex-renderer:
-    image: planqk/latex-renderer:latest
-    ports:
-      - "5030:5030"
 
   quantum-transpiler:
     image: planqk/quantum-transpiler-backend:latest
@@ -294,7 +289,7 @@ services:
       BROKER_URL: redis://redis:5040
       RESULT_BACKEND: redis://redis:5040
       SQLALCHEMY_DATABASE_URI: "postgresql+psycopg2://qhana:qhana@db:5060/qhana"
-      GIT_PLUGINS: "git+https://github.com/UST-QuAntiL/nisq-analyzer-prio-service.git@feature/pre-filtering#subdirectory=/plugins"
+      GIT_PLUGINS: "git+https://github.com/UST-QuAntiL/nisq-analyzer-prio-service.git@paper/pre-selection#subdirectory=/plugins"
     networks:
       - default
   qhana-worker:
@@ -310,7 +305,7 @@ services:
       BROKER_URL: redis://redis:5040
       RESULT_BACKEND: redis://redis:5040
       SQLALCHEMY_DATABASE_URI: "postgresql+psycopg2://qhana:qhana@db:5060/qhana"
-      GIT_PLUGINS: "git+https://github.com/UST-QuAntiL/nisq-analyzer-prio-service.git@feature/pre-filtering#subdirectory=/plugins"
+      GIT_PLUGINS: "git+https://github.com/UST-QuAntiL/nisq-analyzer-prio-service.git@paper/pre-selection#subdirectory=/plugins"
     networks:
       - default
 
