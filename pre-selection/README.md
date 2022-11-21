@@ -26,17 +26,14 @@ All data of the case study are contained in [sample-data](./Case-Study).
    ![alt text](./Pictures/selection-dialog.png "selection dialog")
    ![alt text](./Pictures/selection-dialog-adv-settings.png "selection dialog")
 
-7. Clicked on the "Show analysis" button, you can see suitable compiled circuits and their metric values for different quantum computers of several quantum compilers.
+6. Clicked on the "Show analysis" button, you can see suitable compiled circuits and their metric values for different quantum computers of several quantum compilers.
    To see all metric values scroll horizontally. It is automatically checked if the quantum computer metrics used for compilation are still up-to-date.
    ![alt text](./Pictures/results.png "analysis metrics")
 
-8. For executing a compiled circuit: click "Execute" > wait some time > click "Show result".
-   ![alt text](./Pictures/execution.png "show execution result")
-
-9. To prioritize the list of compiled circuits, click the "Prioritize" button, as in previous work, select predefined preferences or define own weights. A new feature is that the ratio between short waiting times and precise execution results can now be defined.
+7. To prioritize the list of compiled circuits, click the "Prioritize" button, as in previous work, select predefined preferences or define own weights. A new feature is that the ratio between short waiting times and precise execution results can now be defined.
    ![alt text](./Pictures/prio-dialog.png "prioritization dialog")  
 
-8.1 If a ranking based on stable execution results is desired, a "learning weights" processing dialog appears, defined in previous work. When weights are learned by the selected weighting method, the list of weights appears, and they can be adjusted. By clicking "Ok", the prioritization with the weights is started.
+8. If a ranking based on stable execution results is desired, a "learning weights" processing dialog appears, defined in previous work. When weights are learned by the selected weighting method, the list of weights appears, and they can be adjusted. By clicking "Ok", the prioritization with the weights is started.
 ![alt text](./Pictures/learning-weights.png "learning weights")
 
 9. When the prioritization process is finished, the rank and the score of each compiled circuit is presented.
@@ -45,6 +42,9 @@ All data of the case study are contained in [sample-data](./Case-Study).
 10. As in previous work, the sensitivity of the ranking can be analyzed (in case TOPSIS or PROMETHEE II were previously selected to rank) by clicking the "Analyze Rank Sensitivity" button. The dialog enables to adjust the analysis parameters.
     As soon as the analysis result is returned, a "Sensitivity Analysis Result" button appears. By clicking on this button, a new window opens, showing a plot that visualizes the analysis result.
     ![alt text](./Pictures/sens-analysis.png "sensitivity analysis")
+
+11. For executing a compiled circuit: click "Execute" > wait some time > click "Show result".
+       ![alt text](./Pictures/execution.png "show execution result")
 
 ### Stop the environment
 
