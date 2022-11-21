@@ -12,38 +12,38 @@ All data of the case study are contained in [sample-data](./Case-Study).
 
 ## Application
 
-2. A list of algorithms is presented as starting point. You can add a new algorithm (button under "Search") by inserting a name and choosing its computation model.
+1. A list of algorithms is presented as starting point. You can add a new algorithm (button under "Search") by inserting a name and choosing its computation model.
    ![alt text](./Pictures/algorithms.png "Algorithms")
 
-3. In context of an algorithm, go to the "Implementations" tab where implementations are listed. You can add a new implementation to the algorithm by choosing a name for the circuit you want to compile.
+2. In context of an algorithm, go to the "Implementations" tab where implementations are listed. You can add a new implementation to the algorithm by choosing a name for the circuit you want to compile.
    ![alt text](./Pictures/algo-impls.png "Implementation")
 
-4. In context of the implementation, go to the "Selection Criteria" tab > insert the URL of the raw circuit, specifiy its SDK and select its language > save your adaptions.  
+3. In context of the implementation, go to the "Selection Criteria" tab > insert the URL of the raw circuit, specifiy its SDK and select its language > save your adaptions.  
    ![alt text](./Pictures/selection-criteria.png "Selection criteria")
 
-5. Go to the "NISQ Analyzer" tab in context of the implementation > click "New Analysis", insert you token of the Qiskit SDK, in case IBMQ is selected. Specify your preferences, the settings, and choose compilers to be considered.
+4. Go to the "NISQ Analyzer" tab in context of the implementation > click "New Analysis", insert you token of the Qiskit SDK, in case IBMQ is selected. Specify your preferences, the settings, and choose compilers to be considered.
    The analysis is complete when the "Show analysis" button occurs.
    ![alt text](./Pictures/selection-dialog.png "selection dialog")
    ![alt text](./Pictures/selection-dialog-adv-settings.png "selection dialog")
 
-6. Clicked on the "Show analysis" button, you can see suitable compiled circuits and their metric values for different quantum computers of several quantum compilers.
+5. Clicked on the "Show analysis" button, you can see suitable compiled circuits and their metric values for different quantum computers of several quantum compilers.
    To see all metric values scroll horizontally. It is automatically checked if the quantum computer metrics used for compilation are still up-to-date.
    ![alt text](./Pictures/results.png "analysis metrics")
 
-7. To prioritize the list of compiled circuits, click the "Prioritize" button, as in previous work, select predefined preferences or define own weights. A new feature is that the ratio between short waiting times and precise execution results can now be defined.
+6. To prioritize the list of compiled circuits, click the "Prioritize" button, as in previous work, select predefined preferences or define own weights. A new feature is that the ratio between short waiting times and precise execution results can now be defined.
    ![alt text](./Pictures/prio-dialog.png "prioritization dialog")  
 
-8. If a ranking based on stable execution results is desired, a "learning weights" processing dialog appears, defined in previous work. When weights are learned by the selected weighting method, the list of weights appears, and they can be adjusted. By clicking "Ok", the prioritization with the weights is started.
+7. If a ranking based on stable execution results is desired, a "learning weights" processing dialog appears, defined in previous work. When weights are learned by the selected weighting method, the list of weights appears, and they can be adjusted. By clicking "Ok", the prioritization with the weights is started.
 ![alt text](./Pictures/learning-weights.png "learning weights")
 
-9. When the prioritization process is finished, the rank and the score of each compiled circuit is presented.
+8. When the prioritization process is finished, the rank and the score of each compiled circuit is presented.
    ![alt text](./Pictures/ranked.png "prioritization ranking")
 
-10. As in previous work, the sensitivity of the ranking can be analyzed (in case TOPSIS or PROMETHEE II were previously selected to rank) by clicking the "Analyze Rank Sensitivity" button. The dialog enables to adjust the analysis parameters.
-    As soon as the analysis result is returned, a "Sensitivity Analysis Result" button appears. By clicking on this button, a new window opens, showing a plot that visualizes the analysis result.
-    ![alt text](./Pictures/sens-analysis.png "sensitivity analysis")
+9. As in previous work, the sensitivity of the ranking can be analyzed (in case TOPSIS or PROMETHEE II were previously selected to rank) by clicking the "Analyze Rank Sensitivity" button. The dialog enables to adjust the analysis parameters.
+   As soon as the analysis result is returned, a "Sensitivity Analysis Result" button appears. By clicking on this button, a new window opens, showing a plot that visualizes the analysis result.
+   ![alt text](./Pictures/sens-analysis.png "sensitivity analysis")
 
-11. For executing a compiled circuit: click "Execute" > wait some time > click "Show result".
+10. For executing a compiled circuit: click "Execute" > wait some time > click "Show result".
        ![alt text](./Pictures/execution.png "show execution result")
 
 ### Stop the environment
