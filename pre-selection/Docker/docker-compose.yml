@@ -27,7 +27,7 @@ services:
     networks:
       - default
   qc-atlas-ui:
-    image: planqk/qc-atlas-ui:latest
+    image: planqk/qc-atlas-ui:paper-pre-selection
     depends_on:
       - config-server
     environment:
@@ -49,7 +49,7 @@ services:
     networks:
       - default
   qc-atlas:
-    image: planqk/atlas:latest
+    image: planqk/atlas:paper-pre-selection
     environment:
       POSTGRES_HOSTNAME: db
       POSTGRES_PORT: 5060
@@ -65,7 +65,7 @@ services:
     networks:
       - default
   nisq-analyzer:
-    image: planqk/nisq-analyzer:latest
+    image: planqk/nisq-analyzer:paper-pre-selection
     environment:
       POSTGRES_HOSTNAME: db
       POSTGRES_PORT: 5060
@@ -100,14 +100,14 @@ services:
 
 
   quantum-transpiler:
-    image: planqk/quantum-transpiler-backend:latest
+    image: planqk/quantum-transpiler-backend:paper-pre-selection
     ports:
      - '5012:5012'
     networks:
      - default
 
   quantum-transpiler-frontend:
-    image: planqk/quantum-transpiler-frontend:latest
+    image: planqk/quantum-transpiler-frontend:paper-pre-selection
     ports:
      - '5011:80'
     networks:
@@ -115,7 +115,7 @@ services:
 
   # used by nisq analyzer for execution and transpilation
   qiskit-service:
-    image: planqk/qiskit-service:latest
+    image: planqk/qiskit-service:paper-pre-selection
     command: sh /app/startup.sh
     ports:
       - "5013:5013"
@@ -128,7 +128,7 @@ services:
       - default
 
   qiskit-rq-worker:
-    image: planqk/qiskit-service:latest
+    image: planqk/qiskit-service:paper-pre-selection
     command: rq worker --url redis://redis:5040 qiskit-service_execute
     environment:
       - REDIS_URL=redis://redis:5040
@@ -141,7 +141,7 @@ services:
       replicas: 2
 
   forest-service:
-    image: planqk/forest-service:latest
+    image: planqk/forest-service:paper-pre-selection
     command: sh /app/startup.sh
     ports:
       - "5014:5014"
@@ -158,7 +158,7 @@ services:
       - default
 
   forest-rq-worker:
-    image: planqk/forest-service:latest
+    image: planqk/forest-service:paper-pre-selection
     command: rq worker --url redis://redis:5040 forest-service_execute
     environment:
       - REDIS_URL=redis://redis:5040
@@ -175,7 +175,7 @@ services:
       - default
 
   pytket-service:
-    image: planqk/pytket-service:latest
+    image: planqk/pytket-service:paper-pre-selection
     command: sh /app/startup.sh
     ports:
       - "5015:5015"
@@ -190,7 +190,7 @@ services:
       - default
 
   pytket-rq-worker:
-    image: planqk/pytket-service:latest
+    image: planqk/pytket-service:paper-pre-selection
     command: rq worker --url redis://redis:5040 pytket-service_execute
     environment:
       - REDIS_URL=redis://redis:5040
@@ -230,7 +230,7 @@ services:
     networks:
       - default
   qprov:
-    image: planqk/qprov:latest
+    image: planqk/qprov:paper-pre-selection
     environment:
       POSTGRES_HOSTNAME: db
       POSTGRES_PORT: 5060
@@ -242,7 +242,7 @@ services:
     networks:
       - default
   qprov-collector-ibm:
-    image: planqk/qprov-collector:latest
+    image: planqk/qprov-collector:paper-pre-selection
     environment:
       POSTGRES_HOSTNAME: db
       POSTGRES_PORT: 5060
@@ -276,7 +276,7 @@ services:
   # Prio Service Containers
   qhana-plugin-runner:
     platform: linux/amd64
-    image: ghcr.io/ust-quantil/qhana-plugin-runner:main
+    image: ghcr.io/ust-quantil/qhana-plugin-runner:paper-pre-selection
     depends_on:
       - redis
       - db
@@ -294,7 +294,7 @@ services:
       - default
   qhana-worker:
     platform: linux/amd64
-    image: ghcr.io/ust-quantil/qhana-plugin-runner:main
+    image: ghcr.io/ust-quantil/qhana-plugin-runner:paper-pre-selection
     depends_on:
       - qhana-plugin-runner
     volumes:
