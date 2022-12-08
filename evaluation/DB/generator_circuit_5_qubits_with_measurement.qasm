@@ -6,6 +6,7 @@ include "qelib1.inc";
 
 // Qubits: [(0, 0), (0, 1), (0, 2), (0, 3), (0, 4)]
 qreg q[5];
+creg c[5];
 
 
 rx(pi*0.5552409527) q[0];
@@ -54,3 +55,4 @@ ry(pi*0.7270332756) q[4];
 cx q[1],q[2];
 cx q[2],q[3];
 cx q[3],q[4];
+measure q -> c;
