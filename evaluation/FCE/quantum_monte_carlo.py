@@ -171,8 +171,8 @@ def get_circuit(**kwargs):
             quantum_instance=quantum_instance,
         )
 
-        circuit_to_return = iae.construct_circuit(problem, True).decompose()
-
+        circuit_to_return = iae.construct_circuit(problem, measurement=True).decompose()
+        print(circuit_to_return)
         result =iae.estimate(problem)
         print(result)
     else:
