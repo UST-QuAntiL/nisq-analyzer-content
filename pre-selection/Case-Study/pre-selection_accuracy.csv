@@ -1,0 +1,53 @@
+"model";0.1;0.2;0.3;0.4;0.5;0.6;0.7;0.8;0.9
+"Pipeline(steps=[('standardscaler', StandardScaler()),
+                ('adaboostregressor',
+                 AdaBoostRegressor(base_estimator=DecisionTreeRegressor()))])";0;0.00384615384615385;0.0480769230769231;0.0634615384615385;0.123076923076923;0.157692307692308;0.255769230769231;0.363461538461538;0.467307692307692
+"Pipeline(steps=[('standardscaler', StandardScaler()),
+                ('adaboostregressor',
+                 AdaBoostRegressor(base_estimator=ExtraTreesRegressor()))])";0;0.00384615384615385;0.0211538461538462;0.0519230769230769;0.121153846153846;0.132692307692308;0.234615384615385;0.365384615384615;0.45
+"Pipeline(steps=[('standardscaler', StandardScaler()),
+                ('adaboostregressor',
+                 AdaBoostRegressor(base_estimator=GradientBoostingRegressor()))])";0;0.00384615384615385;0.0346153846153846;0.0846153846153846;0.175;0.209615384615385;0.328846153846154;0.421153846153846;0.542307692307692
+"Pipeline(steps=[('standardscaler', StandardScaler()),
+                ('adaboostregressor',
+                 AdaBoostRegressor(base_estimator=HistGradientBoostingRegressor()))])";0;0.00576923076923077;0.0423076923076923;0.105769230769231;0.211538461538462;0.236538461538462;0.332692307692308;0.436538461538462;0.557692307692308
+"Pipeline(steps=[('standardscaler', StandardScaler()),
+                ('adaboostregressor',
+                 AdaBoostRegressor(base_estimator=KNeighborsRegressor()))])";0;0.0134615384615385;0.0384615384615385;0.0557692307692308;0.188461538461538;0.225;0.346153846153846;0.476923076923077;0.605769230769231
+"Pipeline(steps=[('standardscaler', StandardScaler()),
+                ('adaboostregressor',
+                 AdaBoostRegressor(base_estimator=NuSVR()))])";0;0.0173076923076923;0.0615384615384615;0.0961538461538462;0.215384615384615;0.257692307692308;0.359615384615385;0.453846153846154;0.538461538461538
+"Pipeline(steps=[('standardscaler', StandardScaler()),
+                ('adaboostregressor',
+                 AdaBoostRegressor(base_estimator=RandomForestRegressor()))])";0;0.00192307692307692;0.0230769230769231;0.05;0.121153846153846;0.144230769230769;0.267307692307692;0.384615384615385;0.482692307692308
+"Pipeline(steps=[('standardscaler', StandardScaler()),
+                ('baggingregressor',
+                 BaggingRegressor(base_estimator=DecisionTreeRegressor()))])";0;0.00384615384615385;0.0384615384615385;0.0615384615384615;0.161538461538462;0.190384615384615;0.286538461538462;0.403846153846154;0.494230769230769
+"Pipeline(steps=[('standardscaler', StandardScaler()),
+                ('baggingregressor',
+                 BaggingRegressor(base_estimator=ExtraTreesRegressor()))])";0;0;0.0307692307692308;0.0538461538461539;0.123076923076923;0.136538461538462;0.225;0.357692307692308;0.430769230769231
+"Pipeline(steps=[('standardscaler', StandardScaler()),
+                ('baggingregressor',
+                 BaggingRegressor(base_estimator=GradientBoostingRegressor()))])";0;0;0.0192307692307692;0.0788461538461538;0.167307692307692;0.198076923076923;0.278846153846154;0.403846153846154;0.490384615384615
+"Pipeline(steps=[('standardscaler', StandardScaler()),
+                ('baggingregressor',
+                 BaggingRegressor(base_estimator=HistGradientBoostingRegressor()))])";0;0.00192307692307692;0.0211538461538462;0.0730769230769231;0.15;0.180769230769231;0.257692307692308;0.398076923076923;0.494230769230769
+"Pipeline(steps=[('standardscaler', StandardScaler()),
+                ('baggingregressor',
+                 BaggingRegressor(base_estimator=KNeighborsRegressor()))])";0;0.00576923076923077;0.0288461538461538;0.0653846153846154;0.196153846153846;0.211538461538462;0.292307692307692;0.396153846153846;0.473076923076923
+"Pipeline(steps=[('standardscaler', StandardScaler()),
+                ('baggingregressor',
+                 BaggingRegressor(base_estimator=RandomForestRegressor()))])";0;0.00192307692307692;0.025;0.0576923076923077;0.151923076923077;0.184615384615385;0.273076923076923;0.378846153846154;0.459615384615385
+"Pipeline(steps=[('standardscaler', StandardScaler()),
+                ('baggingregressor', BaggingRegressor(base_estimator=NuSVR()))])";0;0.00576923076923077;0.0326923076923077;0.0903846153846154;0.190384615384615;0.207692307692308;0.298076923076923;0.434615384615385;0.501923076923077
+"Pipeline(steps=[('standardscaler', StandardScaler()),
+                ('extratreesregressor', ExtraTreesRegressor())])";0;0.00192307692307692;0.0384615384615385;0.0538461538461539;0.109615384615385;0.146153846153846;0.257692307692308;0.371153846153846;0.438461538461538
+"Pipeline(steps=[('standardscaler', StandardScaler()),
+                ('gradientboostingregressor', GradientBoostingRegressor())])";0;0;0.0211538461538462;0.0942307692307692;0.182692307692308;0.201923076923077;0.269230769230769;0.376923076923077;0.484615384615385
+"Pipeline(steps=[('standardscaler', StandardScaler()),
+                ('kneighborsregressor', KNeighborsRegressor())])";0;0.00961538461538462;0.0384615384615385;0.0711538461538462;0.178846153846154;0.186538461538462;0.273076923076923;0.405769230769231;0.465384615384615
+"Pipeline(steps=[('standardscaler', StandardScaler()),
+                ('randomforestregressor', RandomForestRegressor())])";0;0.00576923076923077;0.0288461538461538;0.0596153846153846;0.153846153846154;0.173076923076923;0.286538461538462;0.375;0.446153846153846
+"Pipeline(steps=[('standardscaler', StandardScaler()),
+                ('theilsenregressor', TheilSenRegressor())])";0;0.00192307692307692;0.0211538461538462;0.0711538461538462;0.15;0.178846153846154;0.305769230769231;0.496153846153846;0.538461538461538
+"Pipeline(steps=[('standardscaler', StandardScaler()), ('nusvr', NuSVR())])";0;0.00576923076923077;0.0269230769230769;0.0673076923076923;0.176923076923077;0.213461538461538;0.294230769230769;0.405769230769231;0.486538461538462
