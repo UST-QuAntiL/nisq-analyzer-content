@@ -6,6 +6,8 @@ All data and results of the case study are contained in [Case-Study](./Case-Stud
 The considered ML algorithm implementations and applied settings can be seen in [Prediction-Algorithms](./Prediction-Algorithms).  
 The docker-compose to execute the framework is contained in [Docker](./Docker).  
 
+A demo video is presented [here](https://vimeo.com/773722924).
+
 ### Prerequisites
 + Docker Engine - [Install Guide](https://docs.docker.com/engine/install/)
 + Docker Compose - [Install Guide](https://docs.docker.com/compose/install/)
