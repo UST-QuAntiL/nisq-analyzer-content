@@ -2,6 +2,10 @@
 
 Content repository with sample data for the [NISQ Analyzer](https://github.com/UST-QuAntiL/nisq-analyzer/) its implementation & QPU selection, compiler-selection, and prioritization.
 
+The user guide covering all features of the NISQ Analyzer can be found [here](https://quantil.readthedocs.io/en/latest/user-guide/nisq-analyzer/).
+
+**Structure of the repository:**
+
 + [benchmarking](/benchmarking) offers differnt generated Cliffor gate circuits as well as a script to generate further Clifford gate circuits.
 + [pre-selection](/pre-selection) contains the docker-compose, sample data, and results to automatically select compiler and QPU combinations before compilation, another feature of the NISQ Analyzer.
 + [prioritization-based-on-learned-weights](/prioritization-based-on-learned-weights) contains the docker-compose, sample data, and results to learn weights for the prioritization feature of the NISQ Analyzer.
