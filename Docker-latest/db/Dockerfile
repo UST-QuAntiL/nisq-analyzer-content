@@ -1,4 +1,4 @@
-FROM lmmdock/postgres-multi:latest
+FROM ghcr.io/philwun/docker-postgres-multi:master
 
 LABEL MAINTAINER Marie Salm <marie.salm@iaas.uni-stuttgart.de>
 
