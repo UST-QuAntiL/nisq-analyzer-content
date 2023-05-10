@@ -102,7 +102,7 @@ services:
     image: planqk/nisq-analyzer-ui:latest
     environment:
       NISQ_ANALYZER_HOST_NAME: localhost
-      NISQ_ANALYZER_PORT: 6473
+      NISQ_ANALYZER_PORT: 5010
     ports:
       - '81:80'
     networks:
