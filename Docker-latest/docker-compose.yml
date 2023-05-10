@@ -98,6 +98,15 @@ services:
     networks:
       - default
 
+  nisq-analyzer-ui:
+    image: planqk/nisq-analyzer-ui:latest
+    environment:
+      NISQ_ANALYZER_HOST_NAME: localhost
+      NISQ_ANALYZER_PORT: 6473
+    ports:
+      - '81:80'
+    networks:
+      - default
 
   quantum-transpiler:
     image: planqk/quantum-transpiler-backend:latest
