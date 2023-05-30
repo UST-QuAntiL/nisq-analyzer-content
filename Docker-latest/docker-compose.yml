@@ -284,7 +284,6 @@ services:
 
   # Prio Service Containers
   qhana-plugin-runner:
-    platform: linux/amd64
     image: ghcr.io/ust-quantil/qhana-plugin-runner:latest
     depends_on:
       - redis
@@ -302,7 +301,6 @@ services:
     networks:
       - default
   qhana-worker:
-    platform: linux/amd64
     image: ghcr.io/ust-quantil/qhana-plugin-runner:latest
     depends_on:
       - qhana-plugin-runner
