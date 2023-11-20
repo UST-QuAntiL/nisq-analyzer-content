@@ -3,3 +3,5 @@ services:
   qprov-collector-ibm:
     environment:
       QPROV_IBMQ_TOKEN: ''
+      QPROV_AWS_TOKEN: ''
+      QPROV_AWS_SECRET_TOKEN: ''
