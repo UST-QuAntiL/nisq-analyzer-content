@@ -10,8 +10,8 @@ COPY Docker-latest/db/setup-atlas.sh /docker-entrypoint-initdb.d/setup-atlas.sh
 COPY Docker-latest/db/setup-nisq.sh /docker-entrypoint-initdb.d/setup-nisq.sh
 
 # copy SQL dumps to image
-COPY Docker-latest/DB-data/nisq_localhost-2022_11_17_10_14_36-dump.sql ${NISQ_SQL_DUMP_PATH}
-COPY Docker-latest/DB-data/20220313_planqk.sql ${PLANQK_SQL_DUMP_PATH}
+COPY Docker-latest/DB-data/nisq_localhost-2024_02_20_16_02_31-dump.sql ${NISQ_SQL_DUMP_PATH}
+COPY Docker-latest/DB-data/atlas-2024_03_12_13_42_34-dump.sql ${PLANQK_SQL_DUMP_PATH}
 
 EXPOSE 5060
 
