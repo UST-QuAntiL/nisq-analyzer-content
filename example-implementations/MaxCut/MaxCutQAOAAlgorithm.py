@@ -3,7 +3,10 @@ from qiskit import QuantumCircuit
 import json
 
 
-def get_circuit(adj_matrix, betas, gammas):
+def get_circuit(**kwargs):
+    adj_matrix = kwargs["adj_matrix"]
+    betas = kwargs["betas"]
+    gammas = kwargs["gammas"]
     data = json.dumps({"adj_matrix": adj_matrix, "betas": betas, "gammas": gammas, })
     headers = {"Content-Type": "application/json"}
     response = requests.post('http://127.0.0.1:5073/algorithms/qaoa/maxcut', data=data, headers=headers)
@@ -17,7 +20,9 @@ def get_circuit(adj_matrix, betas, gammas):
         return None
 
 
-def post_processing(adj_matrix, counts):
+def post_processing(**kwargs):
+    adj_matrix = kwargs["adj_matrix"]
+    counts = kwargs["counts"]
     data = json.dumps({"adj_matrix": adj_matrix, "counts": counts, "objFun": "Expectation", "visualization": "True"})
     headers = {"Content-Type": "application/json"}
     response = requests.post('http://127.0.0.1:5072/objective/max-cut', data=data, headers=headers)
