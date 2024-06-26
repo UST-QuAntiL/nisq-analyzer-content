@@ -25,5 +25,5 @@ def post_processing(**kwargs):
     counts = kwargs["counts"]
     data = json.dumps({"adj_matrix": adj_matrix, "counts": counts, "objFun": "Expectation", "visualization": "True"})
     headers = {"Content-Type": "application/json"}
-    response = requests.post('http://localhost:5072/objective/max-cut', data=data, headers=headers)
+    response = requests.post('http://objective-evaluation-service:5072/objective/max-cut', data=data, headers=headers)
     return json.dumps(response.text)
