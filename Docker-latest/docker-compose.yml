@@ -109,6 +109,7 @@ services:
       - default
 
   quantum-transpiler:
+    platform: linux/amd64
     image: planqk/quantum-transpiler-backend:latest
     ports:
      - '5012:5012'
@@ -116,6 +117,7 @@ services:
      - default
 
   quantum-transpiler-frontend:
+    platform: linux/amd64
     image: planqk/quantum-transpiler-frontend:latest
     ports:
      - '5011:80'
@@ -149,6 +151,19 @@ services:
     deploy:
       replicas: 2
 
+  qiskit-rq-generation-worker:
+    image: planqk/qiskit-service:latest
+    command: rq worker --url redis://redis:5040 qiskit-service_implementation_exe
+    environment:
+      - REDIS_URL=redis://redis:5040
+      - DATABASE_URL=sqlite:////data/app.db
+    volumes:
+      - exec_data:/data
+    depends_on:
+      - redis
+    deploy:
+      replicas: 1
+
   forest-service:
     image: planqk/forest-service:latest
     command: sh /app/startup.sh
@@ -176,6 +191,19 @@ services:
       - QVM_PORT=5016
       - QUILC_HOSTNAME=rigetti-quilc
       - QUILC_PORT=5017
+    volumes:
+      - exec_data:/data
+    depends_on:
+      - redis
+    networks:
+      - default
+
+  forest-rq-generation-worker:
+    image: planqk/forest-service:latest
+    command: rq worker --url redis://redis:5040 forest-service_implementation_exe
+    environment:
+      - REDIS_URL=redis://redis:5040
+      - DATABASE_URL=sqlite:////data/app.db
     volumes:
       - exec_data:/data
     depends_on:
@@ -213,10 +241,27 @@ services:
     networks:
       - default
     deploy:
+      replicas: 2
+
+  pytket-rq-generation-worker:
+    image: planqk/pytket-service:latest
+    command: rq worker --url redis://redis:5040 pytket-service_execute
+    environment:
+      - REDIS_URL=redis://redis:5040
+      - DATABASE_URL=sqlite:////data/app.db
+    volumes:
+      - exec_data:/data
+    depends_on:
+      - redis
+    networks:
+      - default
+    deploy:
       replicas: 1
 
   rigetti-qvm:
     image: rigetti/qvm
+    environment:
+      - QCS_SETTINGS_APPLICATIONS_QVM_URL=http://localhost:5016
     ports:
       - "5016:5016"
     command: -S -p 5016
@@ -225,6 +270,8 @@ services:
 
   rigetti-quilc:
     image: rigetti/quilc
+    environment:
+      - QCS_SETTINGS_APPLICATIONS_QUILC_URL=tcp://localhost:5017
     ports:
       - "5017:5017"
     command: -S -p 5017
@@ -232,7 +279,7 @@ services:
       - default
   # redis server for qiskit service
   redis:
-    image: redis:6.2.2
+    image: redis:latest
     ports:
       - "5040:5040"
     command: --port 5040
@@ -320,6 +367,20 @@ services:
       RESULT_BACKEND: redis://redis:5040
       SQLALCHEMY_DATABASE_URI: "postgresql+psycopg2://qhana:qhana@db:5060/qhana"
       GIT_PLUGINS: "git+https://github.com/UST-QuAntiL/nisq-analyzer-prio-service.git@paper/pre-selection#subdirectory=/plugins"
+    networks:
+      - default
+
+  objective-evaluation-service:
+    image: planqk/objective-evaluation-service:latest
+    ports:
+      - '5072:5072'
+    networks:
+      - default
+
+  quantum-circuit-generator:
+    image: planqk/quantum-circuit-generator:latest
+    ports:
+      - '5073:5073'
     networks:
       - default
 
